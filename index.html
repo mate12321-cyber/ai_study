@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>보직장 AI 실전 가이드 | 8시간 교육 커리큘럼 사전 안내</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Top Sticky Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-badge">사전 브리핑</span>
+        <h1 class="brand-title">보직장 AI 실전 가이드</h1>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="domain-switch" role="group" aria-label="직무 예시 전환">
+          <button type="button" class="domain-btn active" data-domain="electrical">
+            ⚡ 전기기술팀 예시
+          </button>
+          <button type="button" class="domain-btn" data-domain="general">
+            📊 일반 부서장 예시
+          </button>
+        </div>
+
+        <button type="button" id="fontSizeToggle" class="icon-btn" title="글자 크게 보기">
+          가+
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="nav-list" aria-label="커리큘럼 목차">
+        <a href="#module-0" class="nav-item active" data-section="module-0">
+          <span class="nav-step">0</span>
+          <div>
+            <div class="nav-title">AI 핵심 원리 &amp; 환경 준비</div>
+            <div class="nav-meta">사전 안내 · 10분</div>
+          </div>
+        </a>
+        <a href="#module-1" class="nav-item" data-section="module-1">
+          <span class="nav-step">1</span>
+          <div>
+            <div class="nav-title">Gemini Deep Research</div>
+            <div class="nav-meta">1교시 · 2시간</div>
+          </div>
+        </a>
+        <a href="#module-2" class="nav-item" data-section="module-2">
+          <span class="nav-step">2</span>
+          <div>
+            <div class="nav-title">Claude Code 활용</div>
+            <div class="nav-meta">2교시 · 4시간 (핵심)</div>
+          </div>
+        </a>
+        <a href="#module-3" class="nav-item" data-section="module-3">
+          <span class="nav-step">3</span>
+          <div>
+            <div class="nav-title">MCP 개념 &amp; 연동</div>
+            <div class="nav-meta">3교시 · 1시간</div>
+          </div>
+        </a>
+        <a href="#module-4" class="nav-item" data-section="module-4">
+          <span class="nav-step">4</span>
+          <div>
+            <div class="nav-title">동적 대시보드 과제</div>
+            <div class="nav-meta">4교시 · 1시간</div>
+          </div>
+        </a>
+        <a href="#glossary" class="nav-item" data-section="glossary">
+          <span class="nav-step">?</span>
+          <div>
+            <div class="nav-title">핵심 용어 정리</div>
+            <div class="nav-meta">빠른 참고</div>
+          </div>
+        </a>
+      </nav>
+
+      <div class="sidebar-tip">
+        <strong>💡 활용 안내</strong>
+        <p>상단의 <strong>⚡ 전기기술팀 / 📊 일반 부서장</strong> 버튼을 선택하시면 모든 예시와 체험 화면이 해당 직무 기준으로 전환됩니다.</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Banner -->
+      <section class="hero-card">
+        <div class="hero-tag">보직장 AI 교육 사전 안내 · 총 8시간 커리큘럼</div>
+        <h2>직접 코딩하지 않아도 됩니다.<br />명확한 업무 지시만으로 AI를 지휘하는 과정입니다.</h2>
+        <p class="hero-desc">
+          이번 보직장 교육은 AI를 활용해 심층 자료를 조사하고, 사내 문서와 데이터를 연결해
+          <strong>최종적으로 '실시간 동적 대시보드'를 직접 구축해 보는 실무 중심 과정</strong>입니다.
+          아래 순서대로 실제 화면 구성을 미리 살펴보며 흐름을 익혀보실 수 있습니다.
+        </p>
+
+        <div class="curriculum-strip">
+          <div class="curr-pill"><span>1교시 (2h)</span> Deep Research 자료조사</div>
+          <div class="curr-arrow">→</div>
+          <div class="curr-pill highlight"><span>2교시 (4h)</span> Claude Code 실무</div>
+          <div class="curr-arrow">→</div>
+          <div class="curr-pill"><span>3교시 (1h)</span> MCP 데이터 연결</div>
+          <div class="curr-arrow">→</div>
+          <div class="curr-pill"><span>4교시 (1h)</span> 동적 대시보드 제출</div>
+        </div>
+      </section>
+
+      <!-- MODULE 0 -->
+      <section id="module-0" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">Module 0 · 사전 안내</span>
+          <h3>AI 핵심 원리 &amp; Windows 실행 환경</h3>
+          <p>교육 시작 전, 세 가지 핵심 원리만 파악하시면 전체 과정을 훨씬 수월하게 따라가실 수 있습니다.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4>1. AI는 '지시가 명확할수록 뛰어난 전담 참모'</h4>
+            <p class="card-text">
+              AI(Gemini, Claude 등)는 방대한 지식을 갖춘 실무 참모와 같습니다.
+              포괄적인 질문보다 아래 <strong>3가지 요소</strong>를 함께 전달할 때 보고서 품질이 크게 높아집니다.
+            </p>
+            <ul class="clean-list">
+              <li><strong>① 역할 부여:</strong> "15년 경력의 전기설비 전문가 / 경영기획 총괄 관점으로"</li>
+              <li><strong>② 목적·배경:</strong> "다음 주 임원 보고용이며, 핵심 의사결정이 목적임"</li>
+              <li><strong>③ 출력 형식:</strong> "비교표로 정리", "핵심 3가지 요약 후 실행안 제시"</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>2. Windows에서 명령 프롬프트(터미널) 실행하기</h4>
+            <p class="card-text">
+              교육 환경에 따라 <strong>CLI(명령어 기반 화면)</strong>를 사용할 수 있습니다. 아래 3단계만으로 바로 실행됩니다.
+            </p>
+            <div class="win-steps">
+              <div class="win-step">
+                <span class="step-num">1</span>
+                <div>작업할 폴더(예: <code>바탕화면\AI교육</code>)를 엽니다.</div>
+              </div>
+              <div class="win-step">
+                <span class="step-num">2</span>
+                <div>폴더 상단 <strong>주소창</strong>을 클릭하고 <code>cmd</code> 입력 후 <kbd>Enter</kbd>를 누릅니다.</div>
+              </div>
+              <div class="win-step">
+                <span class="step-num">3</span>
+                <div>열린 창에 <code>claude</code> 입력 후 <kbd>Enter</kbd>를 누르면 즉시 시작됩니다.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 1: Gemini Deep Research -->
+      <section id="module-1" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">Module 1 · 1교시 (2시간)</span>
+          <h3>Gemini Deep Research — 심층 리서치 자동화</h3>
+          <p>주제를 입력하면 AI가 조사 계획을 수립하고, 수십 개의 웹 문서를 실시간 탐색해 출처가 포함된 보고서를 작성합니다.</p>
+        </div>
+
+        <div class="compare-3">
+          <div class="compare-box">
+            <div class="compare-label">일반 검색 (포털)</div>
+            <p>웹 링크 목록을 제공 → 담당자가 직접 문서를 열어 읽고 요약해야 함 (1~2시간 소요)</p>
+          </div>
+          <div class="compare-box">
+            <div class="compare-label">일반 AI 질의</div>
+            <p>학습된 지식 기반 즉답 제공 → 최신 동향이나 세부 출처 검증이 부족할 수 있음</p>
+          </div>
+          <div class="compare-box accent">
+            <div class="compare-label">Gemini Deep Research ✨</div>
+            <p><strong>조사 계획 수립 → 다수 사이트 실시간 탐색 → 출처 포함 보고서 완성</strong> (3~5분 소요)</p>
+          </div>
+        </div>
+
+        <!-- Realistic Gemini UI Simulator -->
+        <div class="mockup-wrapper">
+          <div class="mockup-bar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">https://gemini.google.com/app</div>
+            <span class="mockup-badge">실제 화면 체험</span>
+          </div>
+
+          <div class="gemini-shell dark-gemini">
+            <!-- Gemini Left Sidebar -->
+            <div class="gemini-sidebar">
+              <div class="gem-brand-row">✦ Gemini</div>
+              <button type="button" class="gem-new-chat active" id="btnGeminiReset">✎ 새 채팅</button>
+              <div class="gem-side-menu">
+                <div class="gem-menu-item">⊞ 라이브러리</div>
+                <div class="gem-menu-item">🖼 이미지</div>
+                <div class="gem-menu-item">◷ 예약</div>
+                <div class="gem-menu-item">··· 더보기</div>
+              </div>
+              <div class="gem-nav-section">노트북</div>
+              <div class="gem-menu-item">＋ 새 노트북</div>
+              <div class="gem-nav-section">전체</div>
+              <div class="gem-history-item active" id="gemHistoryTitle">Deep Research 리포트</div>
+              <div class="gem-history-item">주간 업무 요약 초안</div>
+              <div class="gem-history-item">규정 변경사항 비교</div>
+            </div>
+
+            <!-- Gemini Main Area -->
+            <div class="gemini-main">
+              <div class="gemini-topbar">
+                <div class="gem-model-badge">Gemini <span class="gem-pro-pill">Deep Research 선택됨</span></div>
+                <div class="gemini-domain-note" id="geminiDomainNote">⚡ 전기기술팀 시나리오</div>
+              </div>
+
+              <div class="gemini-scroll-area" id="geminiScrollArea">
+                <div class="gem-greeting" id="geminiGreeting">
+                  그룹장님, 안녕하세요. 지금 어떤 생각을 하고 계시나요?
+                </div>
+
+                <!-- User prompt bubble -->
+                <div class="gem-user-bubble hidden" id="geminiPromptBubble">
+                  <div class="gem-bubble-text" id="geminiPromptText"></div>
+                </div>
+
+                <!-- Step 0.5: Generating Plan -->
+                <div class="gem-thinking-row hidden" id="geminiStageThinking">
+                  <span class="gem-dots">•••</span>
+                  <span>조사 계획 생성 중</span>
+                </div>
+
+                <!-- Step 1: Plan Card -->
+                <div class="gem-plan-wrap hidden" id="geminiStagePlan">
+                  <div class="gem-plan-intro">제가 만든 계획이에요. 연구하기 전에 변경할 게 있으면 알려 주세요.</div>
+                  <div class="gem-plan-card">
+                    <div class="gem-plan-title" id="geminiPlanTitle">수변전 예지보전 및 KEC 동향</div>
+                    <div class="gem-plan-timeline">
+                      <div class="gem-tl-item">
+                        <span class="gem-tl-icon">📄</span>
+                        <div>
+                          <strong>연구 웹사이트</strong>
+                          <ol class="plan-list" id="geminiPlanList"></ol>
+                        </div>
+                      </div>
+                      <div class="gem-tl-item"><span class="gem-tl-icon">☰</span><span>결과 분석</span></div>
+                      <div class="gem-tl-item"><span class="gem-tl-icon">❖</span><span>보고서 생성</span></div>
+                      <div class="gem-tl-item"><span class="gem-tl-icon">🕒</span><span>몇 분 후 완료</span></div>
+                    </div>
+                    <div class="gem-plan-actions">
+                      <button type="button" class="gem-btn-secondary" id="btnGeminiEditHint">계획 수정</button>
+                      <button type="button" class="gem-btn-primary" id="btnGeminiRun">연구 시작</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2 & 3: Split Research View (Left Chat + Right Research/Report Panel) -->
+                <div class="gem-split-view hidden" id="geminiSplitView">
+                  <div class="gem-split-left">
+                    <div class="gem-start-pill">연구 시작</div>
+                    <div class="gem-left-msg">
+                      ✦<br />
+                      좋습니다. 연구를 진행하는 동안 이 채팅에서 나가셔도 괜찮아요. 완료되는 대로 알려 드릴게요.
+                    </div>
+                    <div class="gem-mini-card" id="geminiMiniStatusCard">
+                      <strong id="geminiMiniTitle">수변전 설비 예지보전 및...</strong>
+                      <span id="geminiMiniSub">Researching websites...</span>
+                    </div>
+                  </div>
+
+                  <div class="gem-split-right">
+                    <!-- Live Scanning Panel -->
+                    <div id="geminiStageScan">
+                      <div class="gem-panel-title" id="geminiScanPanelTitle">수변전 설비 예지보전 및 KEC 동향 조사</div>
+                      <div class="gem-scan-sub"><span class="g-badge">G</span> <span id="geminiScanCount">웹사이트 56개 조사 중...</span></div>
+                      <div class="gem-site-chips" id="geminiSiteChips"></div>
+                      <div class="gem-phase-steps">
+                        <div class="gem-phase-step" id="gemPhaseAnalyze">✦ 결과 분석 중...</div>
+                        <div class="gem-phase-step" id="gemPhaseWrite">✦ 보고서 작성 중...</div>
+                      </div>
+                    </div>
+
+                    <!-- Final Report Panel -->
+                    <div class="hidden" id="geminiStageReport">
+                      <div class="report-toolbar">
+                        <span class="report-done-badge">✦ 리서치 보고서 완성</span>
+                        <button type="button" class="btn-outline" id="btnExportDocs">📄 Docs로 내보내기</button>
+                      </div>
+                      <div class="report-body" id="geminiReportBody"></div>
+                      <div class="gem-sources-box">
+                        <div class="gem-sources-title">Gemini가 보고서에 사용한 소스</div>
+                        <div class="gem-sources-list" id="geminiSourcesList"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Authentic Dark Gemini Bottom Input Bar with + Menu -->
+              <div class="gem-input-dock">
+                <div class="gem-input-box">
+                  <textarea id="geminiInputBox" class="gem-input-textarea" rows="2" placeholder="Gemini에게 물어보기 (아래 템플릿을 복사해 붙여넣거나 직접 입력해 보세요)"></textarea>
+                  <div class="gem-input-bottom">
+                    <div class="gem-left-tools">
+                      <div class="gem-plus-wrap">
+                        <button type="button" class="gem-plus-btn" id="btnGemPlus" title="도구 메뉴 열기">＋</button>
+                        <!-- Authentic + Dropdown Menu -->
+                        <div class="gem-plus-menu" id="gemPlusMenu">
+                          <div class="gem-pm-item">📄 파일</div>
+                          <div class="gem-pm-item">▲ Drive</div>
+                          <div class="gem-pm-item">🖼 포토</div>
+                          <div class="gem-pm-item">📓 Notebooks</div>
+                          <div class="gem-pm-divider"></div>
+                          <div class="gem-pm-item">🎨 이미지 만들기</div>
+                          <div class="gem-pm-item">📋 Canvas</div>
+                          <div class="gem-pm-item has-sub" id="gemMoreTools">
+                            <span>··· 도구 더보기</span><span>›</span>
+                            <div class="gem-submenu">
+                              <button type="button" class="gem-sub-item active" id="btnSelectDeepResearch">🔬 Deep Research</button>
+                              <div class="gem-sub-item">🎓 가이드 학습</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <span class="gem-tool-chip active" id="gemActiveToolChip">🔬 Deep Research</span>
+                      <button type="button" class="gem-fill-btn" id="btnGemFillExample">예시 문구 넣기</button>
+                    </div>
+                    <div class="gem-right-tools">
+                      <span class="gem-model-dot">● Pro</span>
+                      <button type="button" class="gem-send-btn" id="btnGeminiStart" title="전송">➤</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="gem-mode-pills">
+                  <span class="gem-mode-pill active">채팅</span>
+                  <span class="gem-mode-pill">작업</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prompt Templates -->
+        <div class="card">
+          <h4>📋 교육 당일 바로 활용하는 Deep Research 프롬프트</h4>
+          <div class="template-grid" id="deepResearchTemplates"></div>
+        </div>
+
+        <!-- Deep Research Q&A -->
+        <div class="card">
+          <h4>💬 처음 사용할 때 자주 궁금해하는 점 (Deep Research)</h4>
+          <div class="qa-grid">
+            <div class="qa-item">
+              <strong>Q. '리서치 계획'은 왜 중간에 확인하나요?</strong>
+              <p>AI가 3~5분 동안 수십 개 사이트를 조사하기 전에 <strong>조사 방향과 목차가 우리 부서 의도와 맞는지</strong> 먼저 확인하기 위함입니다. 방향이 다르면 '계획 수정'으로 바로잡을 수 있습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 보고서의 출처는 신뢰할 수 있나요?</strong>
+              <p>보고서 본문마다 <code>[1]</code>, <code>[2]</code> 형태의 출처 링크가 함께 생성됩니다. 중요 수치는 해당 링크를 클릭해 원문(공공기관 공고, 기사, 논문 등)을 바로 교차 검증할 수 있습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 완성된 보고서는 어떻게 활용하나요?</strong>
+              <p>우측 상단의 <strong>'Docs로 내보내기'</strong>를 누르면 Google 문서로 즉시 변환되어 팀원에게 공유하거나 임원 보고서 초안으로 바로 다듬을 수 있습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 사내 대외비 자료를 질문에 넣어도 되나요?</strong>
+              <p>Deep Research는 외부 웹 검색 기반 기능입니다. 질문에 사내 기밀 수치나 개인정보는 제외하고, <strong>공개된 산업 동향·법령·벤치마킹</strong> 중심으로 요청하시는 것이 안전합니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 2: Claude Code -->
+      <section id="module-2" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">Module 2 · 2교시 (4시간 · 핵심 과정)</span>
+          <h3>Claude Code 활용 — 내 PC 폴더에서 직접 실행하는 AI</h3>
+          <p>웹 채팅창을 넘어 내 컴퓨터의 작업 폴더에 직접 접근하여 파일을 읽고, 보고서를 작성하고, 웹페이지까지 생성합니다.</p>
+        </div>
+
+        <!-- CLI vs Desktop App comparison -->
+        <div class="card">
+          <h4>💡 CLI(터미널) 방식 vs PC 앱 방식 비교</h4>
+          <p class="card-text">
+            교육장 환경에 따라 두 가지 중 하나의 화면을 사용하게 됩니다. <strong>지시하는 방법과 핵심 기능은 동일</strong>하므로 아래 두 화면을 전환하며 미리 익혀두시면 좋습니다.
+          </p>
+          <div class="grid-2">
+            <div class="sub-box">
+              <div class="sub-box-title">💻 방식 A. Windows 터미널(CLI)</div>
+              <ul class="clean-list">
+                <li>PowerShell 또는 CMD 창에서 <code>claude</code> 입력 후 실행</li>
+                <li>텍스트 중심 화면으로 가볍고 응답 속도가 빠름</li>
+                <li>실무 교육에서 가장 표준적으로 활용되는 형태</li>
+              </ul>
+            </div>
+            <div class="sub-box">
+              <div class="sub-box-title">🖥️ 방식 B. Claude 데스크톱 앱</div>
+              <ul class="clean-list">
+                <li>좌측에 프로젝트 폴더와 파일 목록이 시각적으로 표시됨</li>
+                <li>메신저형 대화창과 마우스 클릭으로 직관적 조작 가능</li>
+                <li>비개발 직군 및 관리자 과정에서 선호되는 형태</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Authentic Claude Code Simulator -->
+        <div class="mockup-wrapper">
+          <div class="mockup-bar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url" id="claudeWindowTitle">Windows PowerShell — claude</div>
+            <div class="view-toggle">
+              <button type="button" class="view-btn active" data-claude-view="cli">💻 CLI(터미널) 실제화면</button>
+              <button type="button" class="view-btn" data-claude-view="app">🖥️ PC 앱 실제화면</button>
+            </div>
+          </div>
+
+          <div class="claude-sim cli-mode" id="claudeSimContainer">
+            <!-- App Mode Left Sidebar -->
+            <div class="claude-app-sidebar" id="claudeAppSidebar">
+              <div class="app-sidebar-top">Claude Code</div>
+              <div class="sidebar-folder">📁 <span id="claudeFolderName"></span></div>
+              <ul class="file-tree" id="claudeFileTree"></ul>
+            </div>
+
+            <!-- Main Pane -->
+            <div class="claude-main-pane">
+              <div class="claude-banner">
+                <pre class="ascii-banner">╭──────────────────────────────────────────────────────────╮
+│ ✻ Welcome to Claude Code!                                │
+│   cwd: C:\Users\GroupLead\Desktop\<span id="claudeCwdName"></span>       │
+╰──────────────────────────────────────────────────────────╯</pre>
+              </div>
+
+              <div class="claude-chat-log" id="claudeChatLog"></div>
+
+              <!-- Prompt Chips -->
+              <div class="claude-quick-prompts" id="claudeQuickPrompts"></div>
+
+              <!-- Authentic CLI Prompt Footer (Real Input) -->
+              <div class="claude-cli-footer" id="claudeCliFooter">
+                <span class="cli-prompt-arrow">&gt;</span>
+                <input type="text" id="claudeUserInput" class="claude-user-input" placeholder="지시할 프롬프트를 붙여넣거나 직접 입력 후 Enter를 누르세요..." />
+                <button type="button" id="btnClaudeSend" class="claude-send-btn">실행</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cheat Sheet -->
+        <div class="card">
+          <h4>⌨️ Claude Code 핵심 단축 명령어 4가지 (입력창에 직접 치거나 아래 카드를 눌러보세요)</h4>
+          <div class="cheat-grid">
+            <button type="button" class="cheat-item" data-cmd="/help">
+              <code>/help</code>
+              <span>사용 가능한 명령어 안내 보기</span>
+            </button>
+            <button type="button" class="cheat-item" data-cmd="/clear">
+              <code>/clear</code>
+              <span>이전 대화 맥락을 비우고 새 작업 시작하기</span>
+            </button>
+            <button type="button" class="cheat-item" data-cmd="/compact">
+              <code>/compact</code>
+              <span>대화가 길어졌을 때 핵심 내용만 압축해 유지하기</span>
+            </button>
+            <button type="button" class="cheat-item" data-cmd="interrupt">
+              <span><code>Ctrl + C</code> / <code>Esc</code></span>
+              <span>진행 중인 작업을 즉시 중단하기</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Claude Code Q&A -->
+        <div class="card">
+          <h4>💬 처음 사용할 때 자주 궁금해하는 점 (Claude Code)</h4>
+          <div class="qa-grid">
+            <div class="qa-item">
+              <strong>Q. 이름에 'Code'가 있는데 코딩을 몰라도 되나요?</strong>
+              <p>네, 직접 코드를 작성하실 필요가 없습니다. <strong>한국어로 업무를 지시하면</strong> Claude Code가 파일 분석, 문서 정리, 웹 대시보드 코드 작성을 대신 처리합니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 웹 채팅(Claude.ai)과 무엇이 다른가요?</strong>
+              <p>웹 채팅은 매번 파일을 업로드하고 결과를 복사해야 하지만, Claude Code는 <strong>내 PC 폴더 안에서 여러 파일을 직접 읽고 결과 파일까지 저장</strong>해 줍니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 내 PC의 다른 중요한 파일까지 건드리진 않나요?</strong>
+              <p>Claude Code는 실행한 <strong>현재 작업 폴더 내부</strong>만 기준으로 동작하며, 파일을 새로 쓰거나 수정·실행할 때는 사전에 사용자에게 승인을 요청합니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 원하는 결과가 안 나오면 어떻게 하나요?</strong>
+              <p>"표가 너무 복잡하니 핵심 3개만 남겨줘"처럼 <strong>자연스럽게 추가 수정 지시</strong>를 하시면 기존 파일을 유지한 채 필요한 부분만 고쳐줍니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 3: MCP -->
+      <section id="module-3" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">Module 3 · 3교시 (1시간)</span>
+          <h3>MCP (Model Context Protocol) — AI 데이터 연결 표준</h3>
+          <p>AI가 내 PC의 문서, 사내 데이터베이스, 외부 웹 도구와 안전하게 연결될 수 있도록 해주는 표준 연결 규격(USB-C 역할)입니다.</p>
+        </div>
+
+        <div class="card">
+          <div class="mcp-diagram">
+            <div class="mcp-node ai">
+              <strong>Claude Code</strong>
+              <span>분석 및 작업 수행</span>
+            </div>
+            <div class="mcp-connector">
+              <div class="mcp-line"></div>
+              <div class="mcp-hub">🔌 MCP 표준 연결<br /><small>(만능 어댑터)</small></div>
+              <div class="mcp-line"></div>
+            </div>
+            <div class="mcp-targets">
+              <div class="mcp-target">📂 내 PC 폴더 / Excel · CSV</div>
+              <div class="mcp-target">🌐 실시간 웹 검색 · API</div>
+              <div class="mcp-target">📊 사내 DB / 노션 / 드라이브</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Authentic MCP Permission Prompt Simulator -->
+        <div class="mockup-wrapper">
+          <div class="mockup-bar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">Claude Code — MCP 도구 실행 승인 화면 체험</div>
+            <span class="mockup-badge">실제 화면 체험</span>
+          </div>
+
+          <div class="mcp-sim-body">
+            <div class="mcp-step-desc">
+              보안 원칙상 AI는 외부 데이터에 접근할 때 반드시 <strong>사용자의 실행 승인</strong>을 요청합니다.
+              실습 중 아래 승인 창이 뜨면 당황하지 마시고 <strong>[1. Yes (허용)]</strong>을 선택하시면 됩니다.
+            </div>
+            <div class="mcp-controls">
+              <button type="button" class="btn-primary" id="btnMcpAsk">▶ MCP 자료 조회 요청 보내기</button>
+              <button type="button" class="btn-ghost" id="btnMcpReset">초기화</button>
+            </div>
+            <div class="mcp-terminal-box" id="mcpLog"></div>
+          </div>
+        </div>
+
+        <!-- MCP Q&A -->
+        <div class="card">
+          <h4>💬 처음 사용할 때 자주 궁금해하는 점 (MCP)</h4>
+          <div class="qa-grid">
+            <div class="qa-item">
+              <strong>Q. MCP가 도입되기 전에는 어떻게 했나요?</strong>
+              <p>과거에는 AI 서비스마다 사내 DB, 엑셀, 노션 등을 연결하는 맞춤 프로그램을 매번 따로 개발해야 했습니다. MCP는 이를 <strong>USB-C처럼 하나의 표준 규격</strong>으로 통일했습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 실제로 어떤 업무 도구들을 연결할 수 있나요?</strong>
+              <p>내 PC 폴더(파일 시스템), Excel/CSV 데이터, Google Drive, Notion, Slack, 사내 데이터베이스, 실시간 웹 브라우저 등 다양한 도구를 플러그처럼 연결할 수 있습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 연결하면 AI가 모든 사내 데이터를 다 보게 되나요?</strong>
+              <p>아닙니다. 사용자가 <strong>허용한 특정 폴더나 도구에만</strong> 접근 가능하며, 실제로 데이터를 조회하거나 변경할 때마다 위 체험처럼 실행 승인 여부를 물어보도록 제어할 수 있습니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 부서장 입장에서 MCP를 알면 무엇이 좋나요?</strong>
+              <p>우리 팀의 점검 일지나 실적 파일이 있는 폴더에 MCP만 연결해 두면, AI가 <strong>매번 파일을 붙여넣지 않아도 최신 데이터를 직접 읽고 현황을 보고</strong>하게 만들 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE 4: Dynamic Dashboard -->
+      <section id="module-4" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">Module 4 · 4교시 최종 과제 (1시간)</span>
+          <h3>동적 대시보드 제작 — 최종 과제 완성 예시</h3>
+          <p>
+            고정된 이미지 형태의 보고서가 아니라, <strong>기간과 구역/팀 필터를 선택할 때마다 수치와 그래프가 즉시 반응하는 웹 대시보드</strong>입니다.
+            아래 완성본의 드롭다운 메뉴를 직접 변경해 보며 최종 결과물의 형태를 확인해 보세요.
+          </p>
+        </div>
+
+        <!-- Live Working Dynamic Dashboard -->
+        <div class="mockup-wrapper dashboard-wrapper">
+          <div class="mockup-bar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url" id="dashBrowserTitle">부서장용 실시간 현황 대시보드 (과제 완성 예시)</div>
+            <span class="mockup-badge live">● LIVE 동작 중</span>
+          </div>
+
+          <div class="dash-app">
+            <div class="dash-header">
+              <div>
+                <h4 id="dashTitle"></h4>
+                <p id="dashSubtitle"></p>
+              </div>
+              <div class="dash-filters">
+                <select id="dashPeriodFilter" aria-label="기간 선택">
+                  <option value="month">이번 달 기준</option>
+                  <option value="quarter">이번 분기 기준</option>
+                </select>
+                <select id="dashGroupFilter" aria-label="구분 선택"></select>
+              </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid" id="dashKpiGrid"></div>
+
+            <!-- Chart & Table -->
+            <div class="dash-body-grid">
+              <div class="dash-card">
+                <div class="dash-card-title" id="dashChartTitle"></div>
+                <div class="svg-chart-wrap" id="dashSvgChart"></div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-title" id="dashTableTitle"></div>
+                <div class="table-wrap">
+                  <table class="dash-table" id="dashTable"></table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Assignment Prompt -->
+        <div class="card">
+          <h4>🏆 과제 제출 시 Claude Code에 입력하는 제작 요청 프롬프트</h4>
+          <p class="card-text">마지막 과제 시간에 아래 문구를 복사해 입력하시면, 데이터가 반영된 동적 대시보드를 손쉽게 완성하실 수 있습니다.</p>
+          <div class="template-grid" id="dashboardTemplates"></div>
+        </div>
+
+        <!-- Dashboard Q&A -->
+        <div class="card">
+          <h4>💬 최종 과제 제출 전 알아두면 좋은 점</h4>
+          <div class="qa-grid">
+            <div class="qa-item">
+              <strong>Q. 완성된 대시보드는 어떤 파일로 나오나요?</strong>
+              <p>보통 <code>index.html</code> 웹 파일 형태로 생성됩니다. 별도 프로그램 설치 없이 크롬이나 엣지 브라우저로 열면 바로 화면이 나타납니다.</p>
+            </div>
+            <div class="qa-item">
+              <strong>Q. 다음 달 새 데이터가 생기면 어떻게 업데이트하나요?</strong>
+              <p>같은 폴더에 새 엑셀/CSV 파일을 넣고 Claude Code에게 <strong>"새로 넣은 12월 데이터를 반영해서 대시보드를 업데이트해 줘"</strong>라고 지시하면 즉시 갱신됩니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Glossary -->
+      <section id="glossary" class="module-section">
+        <div class="module-header">
+          <span class="module-badge">참고 자료</span>
+          <h3>교육장 핵심 용어 정리</h3>
+          <p>강의 중 자주 등장하는 주요 기술 용어를 업무 관점으로 간결하게 정리했습니다.</p>
+        </div>
+
+        <div class="glossary-grid">
+          <div class="glossary-card">
+            <strong>프롬프트 (Prompt)</strong>
+            <p>AI에게 원하는 결과를 얻기 위해 입력하는 지시문입니다. 구체적인 업무 지시서와 같습니다.</p>
+          </div>
+          <div class="glossary-card">
+            <strong>CLI (Command Line Interface)</strong>
+            <p>마우스 아이콘 대신 터미널 창에 텍스트 명령어를 입력하여 프로그램을 실행하는 방식입니다.</p>
+          </div>
+          <div class="glossary-card">
+            <strong>컨텍스트 (Context) / 토큰</strong>
+            <p>AI가 한 번에 기억하고 처리하는 작업 맥락의 크기입니다. 대화가 길어지면 <code>/compact</code>로 정리합니다.</p>
+          </div>
+          <div class="glossary-card">
+            <strong>할루시네이션 (Hallucination)</strong>
+            <p>AI가 확인되지 않은 정보를 사실처럼 작성하는 현상입니다. Deep Research처럼 출처 확인이 중요합니다.</p>
+          </div>
+          <div class="glossary-card">
+            <strong>MCP (Model Context Protocol)</strong>
+            <p>AI가 로컬 파일, 사내 시스템, 외부 서비스와 안전하게 데이터를 주고받도록 연결하는 표준 규격입니다.</p>
+          </div>
+          <div class="glossary-card">
+            <strong>정적 vs 동적 대시보드</strong>
+            <p>정적은 고정된 이미지·슬라이드이며, 동적은 필터 선택에 따라 데이터와 차트가 실시간 갱신되는 화면입니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>보직장 AI 교육 사전 가이드 · 별도 설치 없이 브라우저에서 바로 확인하실 수 있습니다.</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">복사되었습니다!</div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
