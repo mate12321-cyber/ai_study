@@ -182,6 +182,57 @@ window.AI_STUDY_DATA = {
               { name: 'B동 변압기 #2', metric: '하계 부하 증가', status: '주의', cls: 'warn' },
               { name: 'C동 인버터 #1', metric: '점검 주기 도래', status: '점검필요', cls: 'bad' }
             ]
+          },
+          substationA: {
+            kpis: [
+              { label: 'A동 분기 부하율', value: '66.0%', delta: '전분기 대비 -2.0%', tone: 'good' },
+              { label: '분기 점검 완료율', value: '100%', delta: '무결점 유지', tone: 'good' },
+              { label: '누적 주의/이상', value: '0건', delta: '무사고 지속', tone: 'good' },
+              { label: '분기 평균 역률', value: '97.4%', delta: '최적 상태', tone: 'good' }
+            ],
+            bars: [
+              { name: '주변압기 #1', value: 66, color: '#2563eb' },
+              { name: '주변압기 #2', value: 62, color: '#2563eb' },
+              { name: '특고압 VCB', value: 69, color: '#059669' }
+            ],
+            rows: [
+              { name: 'A동 주변압기 #1', metric: '분기 평균 66%', status: '정상', cls: 'ok' },
+              { name: 'A동 주변압기 #2', metric: '분기 평균 62%', status: '정상', cls: 'ok' }
+            ]
+          },
+          panelB: {
+            kpis: [
+              { label: 'B동 분기 부하율', value: '81.0%', delta: '피크 관리 필요', tone: 'warn' },
+              { label: '분기 점검 완료율', value: '96.5%', delta: '열화상 1회 추가', tone: 'good' },
+              { label: '누적 주의/이상', value: '3건', delta: '2건 조치 완료', tone: 'warn' },
+              { label: '분기 평균 역률', value: '95.4%', delta: '양호', tone: 'good' }
+            ],
+            bars: [
+              { name: '변압기 #2', value: 81, color: '#d97706' },
+              { name: 'MCC 반 #1', value: 76, color: '#2563eb' },
+              { name: 'MCC 반 #2', value: 70, color: '#2563eb' }
+            ],
+            rows: [
+              { name: 'B동 변압기 #2', metric: '분기 평균 81%', status: '주의', cls: 'warn' },
+              { name: 'B동 고압배전반', metric: '이상 없음', status: '정상', cls: 'ok' }
+            ]
+          },
+          solarC: {
+            kpis: [
+              { label: 'C동 분기 효율', value: '64.0%', delta: '전분기 대비 +3.0%', tone: 'good' },
+              { label: '분기 점검 완료율', value: '92.0%', delta: '인버터 #1 예정', tone: 'warn' },
+              { label: '누적 주의/이상', value: '2건', delta: '점검 일정 도래', tone: 'warn' },
+              { label: 'ESS 평균 충전율', value: '89.5%', delta: '정상 가동', tone: 'good' }
+            ],
+            bars: [
+              { name: '인버터 #1', value: 60, color: '#d97706' },
+              { name: '인버터 #2', value: 68, color: '#059669' },
+              { name: 'ESS 뱅크', value: 90, color: '#2563eb' }
+            ],
+            rows: [
+              { name: 'C동 인버터 #1', metric: '분기 점검 도래', status: '점검필요', cls: 'bad' },
+              { name: 'C동 인버터 #2', metric: '발전 양호', status: '정상', cls: 'ok' }
+            ]
           }
         }
       },
@@ -368,6 +419,53 @@ window.AI_STUDY_DATA = {
             rows: [
               { name: '신규 프로세스 도입', metric: '기획 1팀 · 완료', status: '순항', cls: 'ok' },
               { name: '시스템 고도화 과제', metric: '운영 2팀 · 80%', status: '지연주의', cls: 'warn' }
+            ]
+          },
+          team1: {
+            kpis: [
+              { label: '기획 1팀 분기 KPI', value: '96.0%', delta: '목표 초과 달성', tone: 'good' },
+              { label: '분기 예산 집행률', value: '83.0%', delta: '적정', tone: 'good' },
+              { label: '완료 과제', value: '4건', delta: '전원 완료', tone: 'good' },
+              { label: '리스크 건수', value: '0건', delta: '특이사항 없음', tone: 'good' }
+            ],
+            bars: [
+              { name: '신규 프로세스', value: 98, color: '#059669' },
+              { name: '시장 조사', value: 94, color: '#059669' }
+            ],
+            rows: [
+              { name: '신규 프로세스 도입', metric: '완료 (98%)', status: '순항', cls: 'ok' },
+              { name: '시장 조사 보고서', metric: '완료 (94%)', status: '순항', cls: 'ok' }
+            ]
+          },
+          team2: {
+            kpis: [
+              { label: '운영 2팀 분기 KPI', value: '86.0%', delta: '전분기 대비 +4.0%', tone: 'good' },
+              { label: '분기 예산 집행률', value: '79.0%', delta: '계획 일치', tone: 'good' },
+              { label: '진행 과제', value: '3건', delta: '지연 1건 관리 중', tone: 'warn' },
+              { label: '해소된 리스크', value: '2건', delta: '대응 완료', tone: 'good' }
+            ],
+            bars: [
+              { name: '시스템 고도화', value: 80, color: '#d97706' },
+              { name: '정기 운영', value: 92, color: '#2563eb' }
+            ],
+            rows: [
+              { name: '시스템 고도화 과제', metric: '진척률 80%', status: '지연주의', cls: 'warn' },
+              { name: '협력사 계약 갱신', metric: '최종 검토', status: '순항', cls: 'ok' }
+            ]
+          },
+          team3: {
+            kpis: [
+              { label: '지원 3팀 분기 KPI', value: '92.0%', delta: '안정적 달성', tone: 'good' },
+              { label: '분기 예산 집행률', value: '82.5%', delta: '적정', tone: 'good' },
+              { name: '완료 과제', value: '2건', delta: '정상 완료', tone: 'good' },
+              { label: '리스크 건수', value: '0건', delta: '특이사항 없음', tone: 'good' }
+            ],
+            bars: [
+              { name: '연간 교육', value: 93, color: '#059669' },
+              { name: '예산 결산', value: 91, color: '#2563eb' }
+            ],
+            rows: [
+              { name: '연간 교육 프로그램', metric: '완료 (93%)', status: '순항', cls: 'ok' }
             ]
           }
         }

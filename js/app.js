@@ -11,6 +11,7 @@
 
   // Gemini elements
   const geminiDomainNote = document.getElementById('geminiDomainNote');
+  const geminiScrollArea = document.getElementById('geminiScrollArea');
   const geminiGreeting = document.getElementById('geminiGreeting');
   const geminiPromptBubble = document.getElementById('geminiPromptBubble');
   const geminiPromptText = document.getElementById('geminiPromptText');
@@ -23,6 +24,7 @@
   const btnGeminiRun = document.getElementById('btnGeminiRun');
   const btnGeminiEditHint = document.getElementById('btnGeminiEditHint');
   const btnGeminiReset = document.getElementById('btnGeminiReset');
+  const btnGeminiResetTop = document.getElementById('btnGeminiResetTop');
   const btnExportDocs = document.getElementById('btnExportDocs');
   const geminiStageThinking = document.getElementById('geminiStageThinking');
   const geminiStagePlan = document.getElementById('geminiStagePlan');
@@ -57,6 +59,10 @@
   const btnMcpAsk = document.getElementById('btnMcpAsk');
   const btnMcpReset = document.getElementById('btnMcpReset');
   const mcpLog = document.getElementById('mcpLog');
+  const mcpStep1 = document.getElementById('mcpStep1');
+  const mcpStep2 = document.getElementById('mcpStep2');
+  const mcpStep3 = document.getElementById('mcpStep3');
+  const backToTopBtn = document.getElementById('backToTopBtn');
 
   // Dashboard elements
   const dashTitle = document.getElementById('dashTitle');
@@ -124,6 +130,7 @@
   // Gemini Deep Research Simulator
   function resetGemini() {
     if (geminiTimer) clearTimeout(geminiTimer);
+    geminiScrollArea.classList.remove('has-content');
     geminiGreeting.classList.remove('hidden');
     geminiPromptBubble.classList.add('hidden');
     geminiStageThinking.classList.add('hidden');
@@ -182,6 +189,7 @@
     const promptToRun = typed || DATA[currentDomain].gemini.prompt;
     geminiPromptText.textContent = promptToRun;
     geminiInputBox.value = '';
+    geminiScrollArea.classList.add('has-content');
     geminiGreeting.classList.add('hidden');
     geminiPromptBubble.classList.remove('hidden');
     geminiStageThinking.classList.remove('hidden');
@@ -229,6 +237,7 @@
   });
 
   btnGeminiReset.addEventListener('click', resetGemini);
+  btnGeminiResetTop.addEventListener('click', resetGemini);
   btnGeminiEditHint.addEventListener('click', () => {
     showToast('실제 Gemini에서는 이 단계에서 조사 항목을 추가하거나 수정할 수 있습니다.');
   });
@@ -385,14 +394,22 @@
   });
 
   // MCP Simulator
+  function setMcpStep(step) {
+    mcpStep1.classList.toggle('active', step === 1);
+    mcpStep2.classList.toggle('active', step === 2);
+    mcpStep3.classList.toggle('active', step === 3);
+  }
+
   function resetMcp() {
     mcpLog.innerHTML = `<div style="color:#9ca3af; font-family:'JetBrains Mono', monospace;">&gt; 상단의 [MCP 자료 조회 요청 보내기] 버튼을 눌러 시작하세요.</div>`;
     btnMcpAsk.disabled = false;
+    setMcpStep(1);
   }
 
   btnMcpAsk.addEventListener('click', () => {
     const m = DATA[currentDomain].mcp;
     btnMcpAsk.disabled = true;
+    setMcpStep(2);
     mcpLog.innerHTML = `
       <div class="chat-msg user"><strong>&gt;</strong> ${m.question}</div>
       <div class="mcp-cli-perm" id="mcpPermBox">
@@ -408,6 +425,7 @@
     `;
     const handleAllow = () => {
       document.getElementById('mcpPermBox').remove();
+      setMcpStep(3);
       const res = document.createElement('div');
       res.className = 'chat-msg ai';
       res.innerHTML = `<div class="tool-trace">● ${m.toolName}<br/>&nbsp;&nbsp;⎿ 데이터 조회 완료</div><div>${m.answer}</div>`;
@@ -478,9 +496,13 @@
       const h = (b.value / maxVal) * 145;
       const y = 180 - h;
       svgParts += `
-        <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="6" fill="${b.color}" />
-        <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">${b.value}%</text>
-        <text x="${x + barW / 2}" y="202" text-anchor="middle" font-size="11.5" font-weight="600" fill="#334155">${b.name}</text>
+        <g>
+          <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="6" fill="${b.color}">
+            <title>${b.name}: ${b.value}%</title>
+          </rect>
+          <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">${b.value}%</text>
+          <text x="${x + barW / 2}" y="202" text-anchor="middle" font-size="11.5" font-weight="600" fill="#334155">${b.name}</text>
+        </g>
       `;
     });
     svgParts += `</svg>`;
@@ -515,20 +537,21 @@
   dashGroupFilter.addEventListener('change', renderDashboardContent);
 
   // Domain Switching
-  function setDomain(domain) {
+  function setDomain(domain, notify = false) {
     currentDomain = domain;
     domainBtns.forEach((b) => b.classList.toggle('active', b.dataset.domain === domain));
     renderGemini();
     renderClaude();
     resetMcp();
     renderDashboardFilters();
+    if (notify) showToast(`${DATA[domain].label}로 전환되었습니다.`);
   }
 
   domainBtns.forEach((btn) => {
-    btn.addEventListener('click', () => setDomain(btn.dataset.domain));
+    btn.addEventListener('click', () => setDomain(btn.dataset.domain, true));
   });
 
-  // Scroll Spy for Sidebar
+  // Scroll Spy for Sidebar & Back-to-Top
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-item');
 
@@ -541,6 +564,11 @@
     navItems.forEach((item) => {
       item.classList.toggle('active', item.dataset.section === currentId);
     });
+    backToTopBtn.classList.toggle('show', window.scrollY > 400);
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // Init
