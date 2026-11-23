@@ -5787,3 +5787,42 @@ kbd {
   font-size: 0.96rem;
   line-height: 1.75;
 }
+
+/* =========================================================
+   10. Enriched 16-Item Glossary Cards (Category Badge & Tip)
+   ========================================================= */
+.glossary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.glossary-cat {
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1px solid #bfdbfe;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.glossary-card strong {
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.glossary-tip {
+  margin-top: 6px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #1e293b;
+  line-height: 1.58;
+}

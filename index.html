@@ -1237,11 +1237,10 @@
         <!-- Glossary -->
         <section id="glossary" class="module-section">
           <div class="module-header">
-            <span class="module-badge">참고 자료</span>
+            <span class="module-badge">참고 자료 · 총 16개 핵심 용어</span>
             <h3>교육장 핵심 용어 정리</h3>
             <p>
-              강의 중 자주 등장하는 주요 기술 용어를 업무 관점으로 간결하게
-              정리했습니다.
+              강의와 실습 중 자주 등장하는 주요 용어를 보직장 실무 관점과 실제 활용 예시로 상세히 정리했습니다.
             </p>
           </div>
 
@@ -1250,65 +1249,154 @@
               type="search"
               id="glossarySearchInput"
               class="glossary-search-input"
-              placeholder="🔎 궁금한 용어 검색 (예: 프롬프트, CLI, 토큰, 할루시네이션, MCP...)"
+              placeholder="🔎 궁금한 용어 검색 (예: 프롬프트, CLI, 토큰, 할루시네이션, MCP, 마크다운, CSV...)"
               aria-label="핵심 용어 검색"
             />
           </div>
 
           <div class="glossary-grid" id="glossaryGrid">
             <div class="glossary-card">
+              <span class="glossary-cat">AI 기본 개념</span>
               <strong>프롬프트 (Prompt)</strong>
               <p>
-                AI에게 원하는 결과를 얻기 위해 입력하는 지시문입니다. 구체적인
-                업무 지시서와 같습니다.
+                AI에게 원하는 작업과 기준을 전달하는 한국어 업무 요청문입니다. 막연한 질문 대신 <strong>① 관점 지정, ② 보고 목적, ③ 출력 형식(표·요약)</strong>을 함께 적을수록 보고서 완성도가 높아집니다.
               </p>
+              <div class="glossary-tip">💡 실무 팁: 본 가이드의 프롬프트 양식을 복사해 수치와 주제만 바꿔 쓰시면 가장 빠릅니다.</div>
             </div>
+
             <div class="glossary-card">
-              <strong>CLI (Command Line Interface)</strong>
+              <span class="glossary-cat">AI 기본 개념</span>
+              <strong>컨텍스트 (Context) &amp; 토큰 (Token)</strong>
               <p>
-                마우스 아이콘 대신 터미널 창에 텍스트 명령어를 입력하여
-                프로그램을 실행하는 방식입니다.
+                <strong>토큰</strong>은 AI가 글자를 읽고 처리하는 분량 단위이며, <strong>컨텍스트</strong>는 한 번의 대화에서 AI가 동시에 기억할 수 있는 작업 맥락(문서·대화)의 총량입니다.
               </p>
+              <div class="glossary-tip">💡 실무 팁: 대화가 길어져 컨텍스트가 차면 <code>/compact</code>로 핵심만 압축해 속도와 정확도를 유지합니다.</div>
             </div>
+
             <div class="glossary-card">
-              <strong>컨텍스트 (Context) / 토큰</strong>
+              <span class="glossary-cat">AI 기본 개념</span>
+              <strong>할루시네이션 (Hallucination · 환각 현상)</strong>
               <p>
-                AI가 한 번에 기억하고 처리하는 작업 맥락의 크기입니다. 대화가
-                길어지면 <code>/compact</code>로 정리합니다.
+                AI가 최신 정보가 없거나 근거가 부족할 때 그럴듯한 문장이나 수치를 지어내어 사실처럼 답하는 현상입니다. 법령·예산·기술 규격 보고 시 반드시 교차 확인이 필요합니다.
               </p>
+              <div class="glossary-tip">💡 실무 팁: 외부 조사는 Deep Research의 <code>[1]</code> 출처 링크로, 사내 수치는 MCP 원본 조회로 방지합니다.</div>
             </div>
+
             <div class="glossary-card">
-              <strong>할루시네이션 (Hallucination)</strong>
-              <p>
-                AI가 확인되지 않은 정보를 사실처럼 작성하는 현상입니다. Deep
-                Research처럼 출처 확인이 중요합니다.
-              </p>
-            </div>
-            <div class="glossary-card">
-              <strong>MCP (Model Context Protocol)</strong>
-              <p>
-                AI가 로컬 파일, 사내 시스템, 외부 서비스와 안전하게 데이터를
-                주고받도록 연결하는 표준 규격입니다.
-              </p>
-            </div>
-            <div class="glossary-card">
-              <strong>정적 vs 동적 대시보드</strong>
-              <p>
-                정적은 고정된 이미지·슬라이드이며, 동적은 필터 선택에 따라
-                데이터와 차트가 실시간 갱신되는 화면입니다.
-              </p>
-            </div>
-            <div class="glossary-card">
-              <strong>CLAUDE.md (프로젝트 지침서)</strong>
-              <p>
-                작업 폴더에 넣어두는 부서 전용 업무 수칙 메모입니다. 보고서 양식·용어 기준을 적어두면 AI가 매번 자동으로 준수합니다.
-              </p>
-            </div>
-            <div class="glossary-card">
+              <span class="glossary-cat">AI 기본 개념</span>
               <strong>에이전트 (AI Agent)</strong>
               <p>
-                단순 질문 답변을 넘어 스스로 계획을 세우고 파일 열람(<code>Read</code>), 문서 작성(<code>Write</code>), 데이터 조회를 연속 수행하는 AI입니다.
+                단순히 질문에 답변만 하는 챗봇을 넘어, 목표를 주면 스스로 순서를 계획하고 <strong>파일 읽기(<code>Read</code>) → 데이터 분석 → 새 파일 저장(<code>Write</code>)</strong>까지 연속 수행하는 실행형 AI입니다.
               </p>
+              <div class="glossary-tip">💡 실무 팁: 2교시에 배우는 Claude Code가 대표적인 로컬 폴더 기반 AI 에이전트입니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">1교시 · 심층 리서치</span>
+              <strong>딥 리서치 (Deep Research)</strong>
+              <p>
+                주제를 입력하면 AI가 먼저 <strong>조사 계획서</strong>를 제안하고, 수십 개의 최신 웹 문서·정부 고시·연구 자료를 수 분간 심층 탐색해 출처가 달린 종합 보고서를 작성하는 기능입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 연구 시작 전에 <code>✎ 계획 수정</code>으로 우리 부서에 필요한 비교 항목을 추가할 수 있습니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">1교시 · 심층 리서치</span>
+              <strong>캔버스 (Canvas) &amp; 출처 각주 (<code>[1]</code>, <code>[2]</code>)</strong>
+              <p>
+                Gemini 화면 우측에 열리는 전용 문서 보고서 창이 <strong>Canvas</strong>이며, 본문 문장 끝에 붙은 <code>[1]</code>, <code>[2]</code> 배지가 실제 참고한 웹사이트 원문 근거(출처 각주)입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 우측 상단 <code>Google Docs로 내보내기</code>를 누르면 표와 출처가 그대로 워드 문서화됩니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">2교시 · Claude Code</span>
+              <strong>CLI (터미널 / 명령 프롬프트)</strong>
+              <p>
+                마우스로 아이콘을 클릭하는 대신, Windows의 명령 프롬프트(<code>cmd</code>)나 PowerShell 창에 텍스트 명령어를 입력해 프로그램을 빠르게 실행하는 화면입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 작업할 폴더 상단 주소창에 <code>cmd</code>만 치고 엔터를 누르면 해당 폴더에서 바로 열립니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">2교시 · Claude Code</span>
+              <strong>작업 디렉터리 (<code>cwd</code> · 현재 작업 폴더)</strong>
+              <p>
+                Current Working Directory의 약자로, 현재 Claude Code가 실행되어 파일들을 읽고 쓸 수 있는 <strong>기준 업무 폴더 위치</strong>(예: <code>바탕화면\전기기술팀_점검자료</code>)를 뜻합니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 보안상 Claude Code는 이 작업 폴더 바깥의 내 PC 다른 문서에는 임의로 접근하지 않습니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">2교시 · Claude Code</span>
+              <strong>슬래시 명령어 (<code>/help</code> · <code>/compact</code> · <code>/clear</code>)</strong>
+              <p>
+                터미널 입력창에 <code>/</code>로 시작해 AI의 상태를 제어하는 단축 명령어입니다. <code>/status</code>는 현재 폴더·모델 확인, <code>/compact</code>는 대화 압축, <code>/clear</code>는 새 작업 초기화에 씁니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 주제가 완전히 다른 새 보고서를 만들 때는 <code>/clear</code>로 이전 맥락을 비우는 것이 정확합니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">2교시 · Claude Code</span>
+              <strong><code>CLAUDE.md</code> (프로젝트 고정 지침서)</strong>
+              <p>
+                작업 폴더 안에 넣어두는 부서 전용 작성 규칙 메모 파일입니다. 보고서 말투, 필수 포함 항목, 표 양식 기준을 한 번 적어두면 Claude가 실행될 때마다 자동으로 읽고 적용합니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: "모든 보고서 상단에는 임원 보고용 3줄 요약을 먼저 배치할 것" 같은 규칙을 넣어두면 편리합니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">2교시 · Claude Code</span>
+              <strong>도구 실행 로그 (<code>● Read</code> · <code>● Write</code> · Diff)</strong>
+              <p>
+                터미널에서 AI가 <code>● Read(파일명)</code>는 기존 문서를 읽는 중, <code>● Write(파일명)</code>는 새 파일을 생성 중임을 뜻하며, 초록색 <code>+</code> 줄(Diff)은 새로 작성·추가된 내용을 보여줍니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 작업 중 의도와 다른 방향으로 진행될 때는 언제든 <kbd>Esc</kbd> 키를 눌러 즉시 멈출 수 있습니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">3교시 · 데이터 연결</span>
+              <strong>MCP (Model Context Protocol)</strong>
+              <p>
+                AI가 내 PC의 문서 폴더, 사내 ERP 데이터베이스, 법령 검색 API 등 외부 시스템과 안전하게 데이터를 주고받을 수 있도록 연결해 주는 <strong>표준 데이터 인터페이스 규격</strong>입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 터미널에 <code>/mcp</code>를 입력하면 현재 연결된 데이터 서버와 사용 가능한 도구 목록을 볼 수 있습니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">3교시 · 데이터 연결</span>
+              <strong><code>.mcp.json</code> 설정 파일 &amp; 도구 승인 (Permission)</strong>
+              <p>
+                <code>.mcp.json</code>은 작업 폴더에 어떤 MCP 서버를 연결할지 적어둔 설정 파일이며, 실제 데이터를 조회·변경할 때는 항상 사용자의 <strong>보안 승인(<code>1. Yes</code> / <code>2. 세션 자동허용</code> / <code>3. 거절</code>)</strong>을 거칩니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 단순 조회(읽기)는 <code>2번(세션 허용)</code>을, 파일 수정·삭제는 <code>1번(건별 확인)</code>을 선택하세요.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">4교시 · 대시보드 과제</span>
+              <strong>정적 보고서 vs 동적 대시보드</strong>
+              <p>
+                <strong>정적 보고서</strong>는 PPT·PDF처럼 수치가 고정된 문서이고, <strong>동적 대시보드</strong>는 회의 중 기간·구역·팀 필터를 바꿀 때마다 KPI 수치와 그래프, 표가 실시간으로 반응하는 화면입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 주의·지연 항목만 걸러보는 토글 버튼까지 넣어 달라고 요청하면 회의 중 즉시 브리핑이 가능합니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">4교시 · 대시보드 과제</span>
+              <strong>단일 웹 파일 (<code>index.html</code>) &amp; <code>UTF-8</code></strong>
+              <p>
+                <code>index.html</code>은 별도 서버나 유료 프로그램 없이 크롬·엣지 브라우저에서 더블클릭만으로 바로 열리는 웹 표준 파일입니다. <code>UTF-8</code>은 한글이 깨지지 않게 해주는 표준 문자 인코딩입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 만약 대시보드 한글이 깨져 보이면 <em>"UTF-8 인코딩을 적용해 한글 깨짐을 고쳐줘"</em>라고만 입력하면 됩니다.</div>
+            </div>
+
+            <div class="glossary-card">
+              <span class="glossary-cat">실무 파일 형식</span>
+              <strong>마크다운 (<code>.md</code>) &amp; CSV (<code>.csv</code>)</strong>
+              <p>
+                <strong>마크다운(<code>.md</code>)</strong>은 제목·목록·표를 깔끔하게 구조화해 저장하는 AI 표준 텍스트 문서이며, <strong>CSV(<code>.csv</code>)</strong>는 엑셀 표 데이터를 쉼표(<code>,</code>)로 구분해 AI가 가장 빠르고 정확하게 읽는 표 형식입니다.
+              </p>
+              <div class="glossary-tip">💡 실무 팁: 복잡한 엑셀 파일이 잘 안 읽힐 때는 엑셀에서 <code>CSV UTF-8(*.csv)</code>로 저장해 폴더에 넣으면 완벽히 인식합니다.</div>
             </div>
           </div>
         </section>
