@@ -4726,3 +4726,117 @@ a.curr-pill.highlight:hover {
   border-color: #2563eb !important;
   color: #1e40af !important;
 }
+
+/* =========================================================
+   Module 4: Claude Code Dashboard Builder & v2.0 Upgrade Theme
+   ========================================================= */
+.claude-sim.dash-cli-compact {
+  min-height: 360px;
+}
+
+.dash-builder-log {
+  min-height: 190px;
+  max-height: 340px;
+}
+
+.dashboard-wrapper {
+  position: relative;
+}
+
+.dash-empty-state {
+  padding: 64px 24px;
+  text-align: center;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.dash-empty-icon {
+  font-size: 2.4rem;
+}
+
+.dash-empty-state h4 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.dash-empty-state p {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.dash-building-overlay {
+  position: absolute;
+  inset: 42px 0 0 0;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(3px);
+  color: #ffffff;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 0.98rem;
+}
+
+.dash-stage-tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+/* Stage 2 Executive Dark Navy Upgrade Theme */
+.dash-app.stage-2 .dash-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+  padding: 20px 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(30, 58, 138, 0.18);
+}
+
+.dash-app.stage-2 .dash-header p {
+  color: #cbd5e1;
+}
+
+.dash-app.stage-2 .dash-stage-tag {
+  background: rgba(52, 211, 153, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+.dash-app.stage-2 .kpi-card {
+  border-top: 3px solid var(--primary);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.dash-alert-filter-btn {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1.5px solid #f59e0b;
+  padding: 7px 13px;
+  border-radius: 10px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.dash-alert-filter-btn:hover {
+  background: #fef3c7;
+}
+
+.dash-alert-filter-btn.active {
+  background: #d97706;
+  color: #ffffff;
+  border-color: #b45309;
+}

@@ -695,6 +695,42 @@ PV-C01,C동 태양광 인버터 #1,C동 태양광,58.0,49.5,980,점검지연(미
           title: '2단계 · 임원 보고용 시각 완성도 & 기능 추가 프롬프트',
           text: '방금 만든 index.html 대시보드를 임원 보고용으로 업그레이드해 줘.\n[추가 요청]\n1. 상단 헤더를 신뢰감 있는 다크 네이비 톤으로 정돈하고 한글 폰트(Noto Sans KR) 적용\n2. 부하율 80% 이상이거나 점검 지연인 설비만 모아보는 [⚠️ 주의 설비만 보기] 토글 버튼 추가\n3. 우측 상단에 회의 자료로 바로 출력할 수 있는 [🖨️ 인쇄 / PDF 저장] 버튼을 만들어 줘.'
         }
+      ],
+      buildSteps: [
+        {
+          stage: 1,
+          btn: '① [1단계 제작 지시] 점검일지 CSV 읽어서 기본 동적 대시보드(index.html) 생성',
+          prompt:
+            '이 폴더에 있는 설비 점검 데이터(11월_변전실_점검일지.csv)를 읽어서 기간별/구역별 필터, KPI 카드 4개, 구역별 부하율 막대그래프와 점검 상태표가 포함된 동적 대시보드(index.html)를 만들어 줘.',
+          readCall: 'Read(11월_변전실_점검일지.csv)',
+          readSub: 'Read 6 lines (설비코드, 피크부하율, 온도, 절연저항, 점검상태 파싱 완료)',
+          writeCall: 'Write(index.html)',
+          writeSub: 'Wrote 168 lines to index.html',
+          diffLines: [
+            '  1 + <!DOCTYPE html><html lang="ko"><title>전기기술팀 설비·전력 통합 대시보드</title>',
+            ' 24 + <select id="periodFilter">이번 달 / 이번 분기</select> <select id="zoneFilter">전체 구역 / A동 / B동 / C동</select>',
+            ' 58 + <section class="kpi-grid">평균 부하율 72.4% | 점검 완료율 94.2% | 주의 설비 2건 | 평균 역률 96.8%</section>',
+            '112 + <script>renderBarChart(bars); renderInspectionTable(rows);</script>'
+          ],
+          ai: '<code>11월_변전실_점검일지.csv</code> 데이터를 기반으로 <strong>1단계 기본 동적 대시보드(<code>index.html</code>)</strong>를 생성했습니다! 아래 브라우저 화면에서 기간·구역 필터를 조작해 보세요.'
+        },
+        {
+          stage: 2,
+          btn: '② [2단계 고도화 지시] 다크 네이비 임원 보고 테마 + [⚠️ 주의 설비만 보기] + [🖨️ 인쇄/PDF] 추가',
+          prompt:
+            '방금 만든 index.html 대시보드를 임원 보고용으로 업그레이드해 줘. 상단 헤더를 다크 네이비 테마로 바꾸고, [⚠️ 주의 설비만 보기] 필터 토글과 [🖨️ 보고서 인쇄/PDF] 버튼을 추가해 줘.',
+          readCall: 'Read(index.html)',
+          readSub: 'Read 168 lines',
+          writeCall: 'Update(index.html)',
+          writeSub: 'Updated index.html with 34 additions and 6 removals',
+          diffLines: [
+            ' 18 + .dash-header.exec-navy { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #fff; }',
+            ' 31 + <button id="btnAlertOnly">⚠️ 주의/점검필요 설비만 보기</button>',
+            ' 35 + <button id="btnPrintPdf" onclick="window.print()">🖨️ 보고서 인쇄/PDF</button>',
+            '145 + function filterAlertRows(rows) { return rows.filter(r => r.cls !== "ok"); }'
+          ],
+          ai: '<code>index.html</code>에 <strong>임원 보고용 다크 네이비 헤더</strong>, <strong>[⚠️ 주의/점검필요만 보기] 토글 버튼</strong>, <strong>[🖨️ 보고서 인쇄/PDF] 기능</strong>을 모두 반영해 새로고침했습니다! 아래 대시보드 상단에 새로 생긴 버튼들을 직접 눌러보세요.'
+        }
       ]
     }
   },
@@ -1386,6 +1422,42 @@ BG-303,시스템 유지보수,150.0,115.5,77.0%,적정`
         {
           title: '2단계 · 임원 보고용 시각 완성도 & 기능 추가 프롬프트',
           text: '방금 만든 index.html 대시보드를 임원 주간회의 보고용으로 업그레이드해 줘.\n[추가 요청]\n1. 전체 컬러를 깔끔한 기업형 네이비·블루 톤으로 맞추고 표 가독성 개선\n2. 지연주의 또는 확인필요 상태인 안건만 필터링하는 [🚨 중점 관리 이슈만 보기] 버튼 추가\n3. 우측 상단에 보고서 출력용 [🖨️ 인쇄 / PDF 저장] 버튼을 추가해 줘.'
+        }
+      ],
+      buildSteps: [
+        {
+          stage: 1,
+          btn: '① [1단계 제작 지시] 팀별 실적·예산 파일 읽어서 기본 동적 대시보드(index.html) 생성',
+          prompt:
+            '이 폴더에 있는 팀별 실적/예산 파일들(1~3팀 보고서)을 읽어서 기간별/팀별 필터 드롭다운, 핵심 KPI 카드 4개, 팀별 달성률 막대그래프와 과제 현황표가 포함된 동적 대시보드(index.html)를 만들어 줘.',
+          readCall: 'Read(2팀_프로젝트현황.xlsx, 3팀_예산집행내역.csv)',
+          readSub: 'Read 3 team files (KPI 달성률, 예산 집행률, 주요 과제 상태 파싱 완료)',
+          writeCall: 'Write(index.html)',
+          writeSub: 'Wrote 162 lines to index.html',
+          diffLines: [
+            '  1 + <!DOCTYPE html><html lang="ko"><title>부서장용 팀 성과·예산 통합 대시보드</title>',
+            ' 22 + <select id="periodFilter">이번 달 / 이번 분기</select> <select id="teamFilter">전체 팀 / 1팀 / 2팀 / 3팀</select>',
+            ' 54 + <section class="kpi-grid">평균 KPI 88.5% | 예산 집행률 74.0% | 진행 과제 12건 | 리스크 2건</section>',
+            '108 + <script>renderKpiChart(teams); renderProjectTable(projects);</script>'
+          ],
+          ai: '1·2·3팀의 실적 및 예산 파일을 취합해 <strong>1단계 기본 동적 대시보드(<code>index.html</code>)</strong>를 생성했습니다! 아래 브라우저 화면에서 팀별·기간별 필터를 변경해 보세요.'
+        },
+        {
+          stage: 2,
+          btn: '② [2단계 고도화 지시] 다크 네이비 임원 보고 테마 + [🚨 중점 관리 이슈만 보기] + [🖨️ 인쇄/PDF] 추가',
+          prompt:
+            '방금 만든 index.html 대시보드를 임원 주간회의 보고용으로 업그레이드해 줘. 상단 헤더를 기업형 다크 네이비 톤으로 바꾸고, 지연/확인필요 안건만 모아보는 [🚨 중점 관리 이슈만 보기] 토글과 [🖨️ 보고서 인쇄/PDF] 버튼을 추가해 줘.',
+          readCall: 'Read(index.html)',
+          readSub: 'Read 162 lines',
+          writeCall: 'Update(index.html)',
+          writeSub: 'Updated index.html with 32 additions and 5 removals',
+          diffLines: [
+            ' 16 + .dash-header.exec-navy { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #fff; }',
+            ' 29 + <button id="btnAlertOnly">🚨 중점 관리 이슈만 보기</button>',
+            ' 33 + <button id="btnPrintPdf" onclick="window.print()">🖨️ 보고서 인쇄/PDF</button>',
+            '140 + function filterRiskProjects(rows) { return rows.filter(r => r.cls !== "ok"); }'
+          ],
+          ai: '<code>index.html</code>에 <strong>임원 보고용 다크 네이비 헤더</strong>, <strong>[🚨 중점 관리 이슈만 보기] 토글 버튼</strong>, <strong>[🖨️ 보고서 인쇄/PDF] 기능</strong>을 추가해 대시보드를 업그레이드했습니다! 아래 대시보드에서 새로 추가된 기능을 바로 테스트해 보세요.'
         }
       ]
     }

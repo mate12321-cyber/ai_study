@@ -75,7 +75,7 @@
             <span class="nav-step">1</span>
             <div>
               <div class="nav-title">Gemini Deep Research</div>
-              <div class="nav-meta">1교시 · 2시간</div>
+              <div class="nav-meta">1교시 · 1시간</div>
             </div>
           </a>
           <a href="#module-2" class="nav-item" data-section="module-2">
@@ -89,7 +89,7 @@
             <span class="nav-step">3</span>
             <div>
               <div class="nav-title">MCP 개념 &amp; 연동</div>
-              <div class="nav-meta">3교시 · 1시간</div>
+              <div class="nav-meta">3교시 · 2시간</div>
             </div>
           </a>
           <a href="#module-4" class="nav-item" data-section="module-4">
@@ -141,7 +141,7 @@
 
           <div class="curriculum-strip" role="navigation" aria-label="시간표 빠른 이동">
             <a href="#module-1" class="curr-pill">
-              <span>1교시 (2h) · 바로가기</span> Deep Research 자료조사
+              <span>1교시 (1h) · 바로가기</span> Deep Research 자료조사
             </a>
             <div class="curr-arrow" aria-hidden="true">→</div>
             <a href="#module-2" class="curr-pill highlight">
@@ -149,7 +149,7 @@
             </a>
             <div class="curr-arrow" aria-hidden="true">→</div>
             <a href="#module-3" class="curr-pill">
-              <span>3교시 (1h) · 바로가기</span> MCP 데이터 연결
+              <span>3교시 (2h) · 바로가기</span> MCP 데이터 연결
             </a>
             <div class="curr-arrow" aria-hidden="true">→</div>
             <a href="#module-4" class="curr-pill">
@@ -257,7 +257,7 @@
         <!-- MODULE 1: Gemini Deep Research -->
         <section id="module-1" class="module-section">
           <div class="module-header">
-            <span class="module-badge">Module 1 · 1교시 (2시간)</span>
+            <span class="module-badge">Module 1 · 1교시 (1시간)</span>
             <h3>Gemini Deep Research — 심층 리서치 자동화</h3>
             <p>
               주제를 입력하면 AI가 조사 계획을 수립하고, 수십 개의 웹 문서를
@@ -852,7 +852,7 @@
         <!-- MODULE 3: MCP -->
         <section id="module-3" class="module-section">
           <div class="module-header">
-            <span class="module-badge">Module 3 · 3교시 (1시간)</span>
+            <span class="module-badge">Module 3 · 3교시 (2시간)</span>
             <h3>MCP (Model Context Protocol) — AI와 사내 데이터를 연결하는 표준 규격</h3>
             <p>
               아무리 뛰어난 AI라도 <strong>우리 부서의 로컬 폴더, 사내 ERP DB, 내부 규정집</strong>은 스스로 열람할 수 없습니다.
@@ -1089,32 +1089,106 @@
         <section id="module-4" class="module-section">
           <div class="module-header">
             <span class="module-badge">Module 4 · 4교시 최종 과제 (1시간)</span>
-            <h3>동적 대시보드 제작 — 최종 과제 완성 예시</h3>
+            <h3>동적 대시보드 제작 — Claude Code 프롬프트 제작 &amp; 실시간 결과물 시뮬레이션</h3>
             <p>
-              고정된 이미지 형태의 보고서가 아니라,
-              <strong
-                >기간과 구역/팀 필터를 선택할 때마다 수치와 그래프가 즉시
-                반응하는 웹 대시보드</strong
-              >입니다. 아래 완성본의 드롭다운 메뉴를 직접 변경해 보며 최종
-              결과물의 형태를 확인해 보세요.
+              4교시 최종 과제는 <strong>Claude Code에 한국어 프롬프트를 입력해 폴더 내 데이터를 읽고 단일 웹 대시보드(<code>index.html</code>)를 생성·고도화하는 과정</strong>입니다.
+              아래 Claude Code 터미널에 <strong>1단계 기본 제작 → 2단계 임원 보고용 업그레이드</strong> 지시를 직접 입력하거나 버튼을 눌러 대시보드가 만들어지고 진화하는 과정을 체험해 보세요.
             </p>
           </div>
 
-          <!-- Live Working Dynamic Dashboard -->
-          <div class="mockup-wrapper dashboard-wrapper">
+          <!-- Simulator 4: Claude Code Dashboard Builder + Live Browser Preview -->
+          <div class="sim-guide-bar">
+            <div class="sim-guide-title">
+              <span class="sim-guide-badge">실습 시뮬레이터 4</span>
+              <strong>Claude Code 대시보드 제작소 — 프롬프트 입력부터 브라우저 실시간 반영까지</strong>
+            </div>
+            <div class="mcp-flow-pills" aria-label="대시보드 제작 단계">
+              <span class="mcp-flow-step active" id="dashBuildStep1">① 1단계 기본 대시보드 생성 (Write)</span>
+              <span class="sim-step-sep">→</span>
+              <span class="mcp-flow-step" id="dashBuildStep2">② 2단계 임원 보고용 테마·필터 고도화 (Update)</span>
+            </div>
+          </div>
+
+          <!-- Part A: Claude Code Terminal for Dashboard Generation -->
+          <div class="mockup-wrapper claude-win-frame dash-builder-terminal">
+            <div class="win11-titlebar">
+              <div class="win11-tabs">
+                <div class="win11-tab active">
+                  <span class="win11-tab-icon">❯_</span>
+                  <span class="win11-tab-text">Windows PowerShell — claude (4교시 최종 과제: index.html 제작)</span>
+                </div>
+              </div>
+              <div class="win11-controls-right">
+                <button type="button" class="sim-reset-pill" id="btnDashBuilderReset" title="빈 상태에서 대시보드 처음부터 다시 만들기">↻ 빈 상태부터 다시 제작</button>
+                <div class="win11-window-btns">
+                  <span>─</span><span>□</span><span class="close">✕</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="claude-sim cli-mode dash-cli-compact">
+              <div class="claude-main-pane">
+                <div class="claude-banner">
+                  <div class="ps-boot-line">
+                    <span class="ps-path">PS C:\Users\GroupLead\Desktop\<span id="dashPsCwdName">전기기술팀_점검자료</span>&gt;</span> <span class="ps-cmd">claude</span>
+                  </div>
+                </div>
+
+                <div class="claude-chat-log dash-builder-log" id="dashBuilderLog"></div>
+
+                <div class="claude-quick-bar">
+                  <div class="quick-bar-label">
+                    👇 아래 <strong>[① 1단계 제작 지시]</strong>와 <strong>[② 2단계 고도화 지시]</strong>를 눌러보거나, 하단 입력창에 원하는 기능(예: <em>"네이비 테마로 바꿔줘"</em>, <em>"주의 설비 필터 추가해 줘"</em>)을 직접 입력해 보세요
+                  </div>
+                  <div class="claude-quick-prompts" id="dashQuickPrompts"></div>
+                </div>
+
+                <div class="claude-cli-input-wrap">
+                  <div class="claude-cli-footer">
+                    <span class="cli-prompt-arrow">&gt;</span>
+                    <textarea
+                      id="dashUserInput"
+                      class="claude-user-input"
+                      rows="2"
+                      placeholder="대시보드 제작 또는 수정 지시를 입력 후 Enter... (예: '점검일지 CSV로 동적 대시보드 만들어 줘', '네이비 테마와 주의 설비 필터 추가해 줘')"
+                    ></textarea>
+                    <button type="button" id="btnDashPromptSend" class="claude-send-btn">Enter ↵</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Part B: Live Working Dynamic Dashboard (Reacts to Claude Code Build Stage 0 / 1 / 2) -->
+          <div class="mockup-wrapper dashboard-wrapper" id="dashPreviewWrapper">
             <div class="mockup-bar">
               <div class="mockup-dots">
                 <span></span><span></span><span></span>
               </div>
               <div class="mockup-url" id="dashBrowserTitle">
-                부서장용 실시간 현황 대시보드 (과제 완성 예시)
+                C:\Users\GroupLead\Desktop\전기기술팀_점검자료\index.html — 브라우저 실시간 미리보기
               </div>
-              <span class="mockup-badge live">● LIVE 동작 중</span>
+              <span class="mockup-badge live" id="dashVersionBadge">● v1.0 기본 대시보드 동작 중</span>
             </div>
 
-            <div class="dash-app">
-              <div class="dash-header">
+            <!-- Empty state (shown when user clicks "빈 상태부터 다시 제작") -->
+            <div class="dash-empty-state hidden" id="dashEmptyState">
+              <div class="dash-empty-icon">🛠️</div>
+              <h4>아직 <code>index.html</code> 대시보드 파일이 생성되지 않았습니다</h4>
+              <p>위 Claude Code 터미널에서 <strong>[① 1단계 제작 지시]</strong> 버튼을 누르거나 프롬프트를 입력해 대시보드를 생성해 보세요!</p>
+              <button type="button" class="btn-primary" id="btnDashEmptyStart">▶ 1단계 기본 대시보드 바로 생성하기</button>
+            </div>
+
+            <!-- Compiling / Updating overlay -->
+            <div class="dash-building-overlay hidden" id="dashBuildingOverlay">
+              <div class="spinner"></div>
+              <strong id="dashBuildingText">Claude Code가 index.html 파일을 작성하고 브라우저를 새로고침하는 중...</strong>
+            </div>
+
+            <div class="dash-app" id="dashAppContainer">
+              <div class="dash-header" id="dashHeaderBox">
                 <div>
+                  <div class="dash-stage-tag" id="dashStageTag">1단계 기본 생성 완료 (v1.0)</div>
                   <h4 id="dashTitle"></h4>
                   <p id="dashSubtitle"></p>
                 </div>
@@ -1130,7 +1204,10 @@
                     <span>분석 대상</span>
                     <select id="dashGroupFilter" aria-label="구분 선택"></select>
                   </label>
-                  <button type="button" class="dash-print-btn" id="btnDashExportDemo" title="보고용 PDF/인쇄 미리보기 체험">
+                  <button type="button" class="dash-alert-filter-btn hidden" id="btnDashAlertFilter" aria-pressed="false">
+                    ⚠️ 주의/이슈 항목만 보기
+                  </button>
+                  <button type="button" class="dash-print-btn hidden" id="btnDashExportDemo" title="보고용 PDF/인쇄 미리보기 체험">
                     🖨️ 보고서 인쇄/PDF
                   </button>
                 </div>
@@ -1157,7 +1234,7 @@
 
           <!-- Final Assignment Prompt -->
           <div class="card">
-            <h4>🏆 4교시 과제 제출용 단계별 프롬프트 (1단계 기본 제작 → 2단계 디자인·기능 보완)</h4>
+            <h4>📋 교육 당일 복사해서 바로 쓰는 4교시 과제 프롬프트 (위 시뮬레이터에서도 바로 실행 가능)</h4>
             <p class="card-text">
               과제 시간에 <strong>[1단계 프롬프트]</strong>로 먼저 대시보드 기본 화면을 만든 뒤, <strong>[2단계 프롬프트]</strong>를 이어서 입력하면 보고용으로 완성도 높은 대시보드를 손쉽게 제작할 수 있습니다.
             </p>

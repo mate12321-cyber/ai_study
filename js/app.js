@@ -145,6 +145,23 @@
   // Dashboard elements
   const dashTitle = document.getElementById('dashTitle');
   const dashSubtitle = document.getElementById('dashSubtitle');
+  const dashBrowserTitle = document.getElementById('dashBrowserTitle');
+  const dashVersionBadge = document.getElementById('dashVersionBadge');
+  const dashStageTag = document.getElementById('dashStageTag');
+  const dashAppContainer = document.getElementById('dashAppContainer');
+  const dashEmptyState = document.getElementById('dashEmptyState');
+  const btnDashEmptyStart = document.getElementById('btnDashEmptyStart');
+  const dashBuildingOverlay = document.getElementById('dashBuildingOverlay');
+  const dashBuildingText = document.getElementById('dashBuildingText');
+  const dashPsCwdName = document.getElementById('dashPsCwdName');
+  const dashBuilderLog = document.getElementById('dashBuilderLog');
+  const dashQuickPrompts = document.getElementById('dashQuickPrompts');
+  const dashUserInput = document.getElementById('dashUserInput');
+  const btnDashPromptSend = document.getElementById('btnDashPromptSend');
+  const btnDashBuilderReset = document.getElementById('btnDashBuilderReset');
+  const dashBuildStep1 = document.getElementById('dashBuildStep1');
+  const dashBuildStep2 = document.getElementById('dashBuildStep2');
+  const btnDashAlertFilter = document.getElementById('btnDashAlertFilter');
   const dashPeriodFilter = document.getElementById('dashPeriodFilter');
   const dashGroupFilter = document.getElementById('dashGroupFilter');
   const dashKpiGrid = document.getElementById('dashKpiGrid');
@@ -153,6 +170,9 @@
   const dashTableTitle = document.getElementById('dashTableTitle');
   const dashTable = document.getElementById('dashTable');
   const dashboardTemplates = document.getElementById('dashboardTemplates');
+  let dashBuildStage = 1;
+  let dashAlertOnly = false;
+  let dashBuildTimer = null;
 
   function showToast(msg) {
     if (!toastEl) return;
@@ -1601,7 +1621,281 @@
     showToast('MCP 시뮬레이터와 보안 승인 설정이 초기 상태로 재설정되었습니다.');
   });
 
-  // Dynamic Dashboard
+  // Dynamic Dashboard & Claude Code Dashboard Builder Simulator
+  function applyDashBuildStageUI() {
+    const c = DATA[currentDomain].claude;
+    if (dashPsCwdName && c) dashPsCwdName.textContent = c.folderName;
+    if (dashBrowserTitle && c) {
+      dashBrowserTitle.textContent = `C:\\Users\\GroupLead\\Desktop\\${c.folderName}\\index.html — 브라우저 실시간 미리보기`;
+    }
+
+    if (dashBuildStep1 && dashBuildStep2) {
+      dashBuildStep1.classList.toggle('active', dashBuildStage === 1);
+      dashBuildStep1.classList.toggle('done', dashBuildStage > 1);
+      dashBuildStep2.classList.toggle('active', dashBuildStage === 2);
+    }
+
+    if (dashBuildStage === 0) {
+      if (dashEmptyState) dashEmptyState.classList.remove('hidden');
+      if (dashAppContainer) dashAppContainer.classList.add('hidden');
+      if (dashVersionBadge) {
+        dashVersionBadge.textContent = '○ 파일 미생성 (생성 대기 중)';
+        dashVersionBadge.classList.remove('live');
+      }
+      return;
+    }
+
+    if (dashEmptyState) dashEmptyState.classList.add('hidden');
+    if (dashAppContainer) {
+      dashAppContainer.classList.remove('hidden');
+      dashAppContainer.classList.toggle('stage-2', dashBuildStage >= 2);
+    }
+
+    const isStage2 = dashBuildStage >= 2;
+    if (dashVersionBadge) {
+      dashVersionBadge.classList.add('live');
+      dashVersionBadge.textContent = isStage2
+        ? '● v2.0 임원 보고용 대시보드 (고도화 완료)'
+        : '● v1.0 기본 동적 대시보드 동작 중';
+    }
+    if (dashStageTag) {
+      dashStageTag.textContent = isStage2
+        ? '✨ 2단계 임원 보고용 업그레이드 완료 (v2.0 · 다크 네이비 테마 & 이슈 필터)'
+        : '1단계 기본 동적 대시보드 생성 완료 (v1.0)';
+    }
+    if (btnDashAlertFilter) {
+      btnDashAlertFilter.classList.toggle('hidden', !isStage2);
+      btnDashAlertFilter.textContent =
+        currentDomain === 'electrical'
+          ? dashAlertOnly
+            ? '⚠️ 전체 설비 보기'
+            : '⚠️ 주의/점검필요 설비만 보기'
+          : dashAlertOnly
+            ? '🚨 전체 과제 보기'
+            : '🚨 중점 관리 이슈만 보기';
+      btnDashAlertFilter.classList.toggle('active', dashAlertOnly);
+      btnDashAlertFilter.setAttribute('aria-pressed', String(dashAlertOnly));
+    }
+    if (btnDashExportDemo) {
+      btnDashExportDemo.classList.toggle('hidden', !isStage2);
+    }
+  }
+
+  function runDashBuildStep(stepObj) {
+    if (!stepObj || !dashBuilderLog) return;
+    if (dashBuildTimer) {
+      clearTimeout(dashBuildTimer);
+      dashBuildTimer = null;
+    }
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user';
+    userMsg.innerHTML = `<span class="tui-gt">&gt;</span> ${stepObj.prompt}`;
+    dashBuilderLog.appendChild(userMsg);
+
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'chat-msg ai';
+    aiMsg.innerHTML = `
+      <div class="tool-trace"><span class="gem-sparkle-spin">✻</span> Thinking... 데이터 구조 파악 및 대시보드 HTML/JS 코드 설계 중</div>
+    `;
+    dashBuilderLog.appendChild(aiMsg);
+    dashBuilderLog.scrollTop = dashBuilderLog.scrollHeight;
+
+    if (dashBuildingOverlay) {
+      dashBuildingOverlay.classList.remove('hidden');
+      if (dashBuildingText) {
+        dashBuildingText.textContent =
+          stepObj.stage === 2
+            ? 'Claude Code가 index.html에 다크 네이비 테마와 주의 항목 필터를 추가하는 중...'
+            : 'Claude Code가 폴더 내 데이터를 읽어 index.html 동적 대시보드를 생성하는 중...';
+      }
+    }
+
+    dashBuildTimer = setTimeout(() => {
+      aiMsg.innerHTML = `
+        <div class="tui-block">
+          <div class="tui-tool-group">
+            <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${stepObj.readCall}</span></div>
+            <div class="tui-tool-sub">⎿ &nbsp;${stepObj.readSub}</div>
+          </div>
+          <div class="tui-tool-group">
+            <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${stepObj.writeCall}</span></div>
+            <div class="tui-tool-sub">⎿ &nbsp;Writing HTML/CSS/SVG chart code...</div>
+          </div>
+        </div>
+      `;
+      dashBuilderLog.scrollTop = dashBuilderLog.scrollHeight;
+
+      dashBuildTimer = setTimeout(() => {
+        dashBuildTimer = null;
+        if (dashBuildingOverlay) dashBuildingOverlay.classList.add('hidden');
+        dashBuildStage = stepObj.stage || 1;
+        if (dashBuildStage < 2) dashAlertOnly = false;
+
+        const diffHtml = (stepObj.diffLines || [])
+          .map((l) => `<div class="diff-add">${l}</div>`)
+          .join('');
+        aiMsg.innerHTML = `
+          <div class="tui-block">
+            <div class="tui-tool-group">
+              <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${stepObj.readCall}</span></div>
+              <div class="tui-tool-sub">⎿ &nbsp;${stepObj.readSub}</div>
+            </div>
+            <div class="tui-tool-group">
+              <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${stepObj.writeCall}</span></div>
+              <div class="tui-tool-sub">⎿ &nbsp;${stepObj.writeSub}</div>
+            </div>
+            <div class="claude-diff-box">${diffHtml}</div>
+            <div class="tui-answer-row">
+              <span class="tui-bullet-white">●</span>
+              <div class="claude-ai-answer">${stepObj.ai}</div>
+            </div>
+          </div>
+        `;
+        dashBuilderLog.scrollTop = dashBuilderLog.scrollHeight;
+        applyDashBuildStageUI();
+        renderDashboardContent();
+        showToast(
+          dashBuildStage === 2
+            ? '✨ 2단계 임원 보고용 대시보드(v2.0)로 업그레이드되었습니다!'
+            : '📊 1단계 기본 동적 대시보드(index.html)가 생성되었습니다!'
+        );
+      }, 1400);
+    }, 1000);
+  }
+
+  function renderDashBuilderTerminal(initialStage = 1) {
+    const d = DATA[currentDomain].dashboard;
+    dashBuildStage = initialStage;
+    dashAlertOnly = false;
+    if (dashBuildingOverlay) dashBuildingOverlay.classList.add('hidden');
+
+    if (dashBuilderLog) {
+      if (initialStage === 0) {
+        dashBuilderLog.innerHTML = `
+          <div class="chat-msg system">
+            🛠️ 현재 <code>index.html</code> 생성 전입니다. 아래 <strong>[① 1단계 제작 지시]</strong> 버튼을 누르거나 프롬프트를 입력해 대시보드를 생성해 보세요.
+          </div>
+        `;
+      } else {
+        const s1 = (d.buildSteps && d.buildSteps[0]) || null;
+        dashBuilderLog.innerHTML = s1
+          ? `
+            <div class="chat-msg user"><span class="tui-gt">&gt;</span> ${s1.prompt}</div>
+            <div class="chat-msg ai">
+              <div class="tui-block">
+                <div class="tui-tool-group">
+                  <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${s1.readCall}</span></div>
+                  <div class="tui-tool-sub">⎿ &nbsp;${s1.readSub}</div>
+                </div>
+                <div class="tui-tool-group">
+                  <div class="tui-tool-head"><span class="tui-bullet-green">●</span><span class="tui-tool-fn">${s1.writeCall}</span></div>
+                  <div class="tui-tool-sub">⎿ &nbsp;${s1.writeSub}</div>
+                </div>
+                <div class="tui-answer-row">
+                  <span class="tui-bullet-white">●</span>
+                  <div class="claude-ai-answer">${s1.ai} <br/><span style="color:#93c5fd;">💡 이어서 하단의 <strong>[② 2단계 고도화 지시]</strong>를 눌러 임원 보고용 기능(다크 네이비 테마·주의 항목 필터·PDF 인쇄 버튼)을 추가해 보세요!</span></div>
+                </div>
+              </div>
+            </div>
+          `
+          : '';
+      }
+    }
+
+    if (dashQuickPrompts) {
+      dashQuickPrompts.innerHTML = '';
+      (d.buildSteps || []).forEach((st) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `prompt-chip${st.stage <= initialStage ? ' done' : ''}`;
+        btn.textContent = st.btn;
+        btn.addEventListener('click', () => {
+          btn.classList.add('done');
+          runDashBuildStep(st);
+        });
+        dashQuickPrompts.appendChild(btn);
+      });
+    }
+
+    applyDashBuildStageUI();
+  }
+
+  function handleDashCustomInput() {
+    const val = (dashUserInput ? dashUserInput.value : '').trim();
+    const d = DATA[currentDomain].dashboard;
+    const steps = d.buildSteps || [];
+    if (!val) {
+      const nextStep = dashBuildStage < 1 ? steps[0] : steps[1] || steps[0];
+      if (nextStep) runDashBuildStep(nextStep);
+      return;
+    }
+    if (dashUserInput) dashUserInput.value = '';
+    const low = val.toLowerCase();
+    if (low === '/clear' || low === '초기화') {
+      renderDashBuilderTerminal(0);
+      showToast('대시보드가 생성 전(빈 상태)으로 초기화되었습니다.');
+      return;
+    }
+
+    const isUpgrade =
+      val.includes('2단계') ||
+      val.includes('업그레이드') ||
+      val.includes('네이비') ||
+      val.includes('임원') ||
+      val.includes('주의') ||
+      val.includes('이슈') ||
+      val.includes('인쇄') ||
+      val.includes('pdf') ||
+      dashBuildStage >= 1;
+
+    const targetStep = isUpgrade ? steps[1] || steps[0] : steps[0];
+    if (targetStep) {
+      runDashBuildStep({
+        ...targetStep,
+        prompt: val
+      });
+    }
+  }
+
+  if (btnDashPromptSend) {
+    btnDashPromptSend.addEventListener('click', handleDashCustomInput);
+  }
+  if (dashUserInput) {
+    dashUserInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleDashCustomInput();
+      }
+    });
+  }
+  if (btnDashBuilderReset) {
+    btnDashBuilderReset.addEventListener('click', () => {
+      renderDashBuilderTerminal(0);
+      showToast('빈 상태부터 대시보드 생성 과정을 직접 체험해 보세요!');
+    });
+  }
+  if (btnDashEmptyStart) {
+    btnDashEmptyStart.addEventListener('click', () => {
+      const d = DATA[currentDomain].dashboard;
+      if (d.buildSteps && d.buildSteps[0]) {
+        runDashBuildStep(d.buildSteps[0]);
+      }
+    });
+  }
+  if (btnDashAlertFilter) {
+    btnDashAlertFilter.addEventListener('click', () => {
+      dashAlertOnly = !dashAlertOnly;
+      applyDashBuildStageUI();
+      renderDashboardContent();
+      showToast(
+        dashAlertOnly
+          ? '⚠️ 주의/점검필요 항목만 필터링하여 표시합니다.'
+          : '전체 항목을 표시합니다.'
+      );
+    });
+  }
+
   function renderDashboardFilters() {
     const d = DATA[currentDomain].dashboard;
     dashTitle.textContent = d.title;
@@ -1613,8 +1907,21 @@
       .map((g) => `<option value="${g.value}">${g.label}</option>`)
       .join('');
     dashPeriodFilter.value = 'month';
+    renderDashBuilderTerminal(1);
     renderDashboardContent();
-    renderTemplates(dashboardTemplates, d.templates);
+    renderTemplates(dashboardTemplates, d.templates, (idx, item) => {
+      const steps = d.buildSteps || [];
+      const chosen = steps[idx] || steps[0];
+      if (chosen) {
+        if (dashBuilderLog) {
+          dashBuilderLog.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        runDashBuildStep({
+          ...chosen,
+          prompt: item.text
+        });
+      }
+    });
   }
 
   function renderDashboardContent() {
@@ -1672,17 +1979,12 @@
     svgParts += `</svg>`;
     dashSvgChart.innerHTML = svgParts;
 
-    // Table
-    dashTable.innerHTML = `
-      <thead>
-        <tr>
-          <th>항목</th>
-          <th>핵심 수치</th>
-          <th>상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${viewData.rows
+    // Table (supports Stage 2 Alert-Only Filter!)
+    const filteredRows = dashAlertOnly
+      ? viewData.rows.filter((r) => r.cls !== 'ok')
+      : viewData.rows;
+    const rowsHtml = filteredRows.length
+      ? filteredRows
           .map(
             (r) => `
           <tr data-row-name="${r.name}">
@@ -1692,7 +1994,19 @@
           </tr>
         `
           )
-          .join('')}
+          .join('')
+      : `<tr><td colspan="3" style="text-align:center;color:#64748b;padding:18px;">해당 조건에서 주의/점검필요 항목이 없습니다 (모두 정상).</td></tr>`;
+
+    dashTable.innerHTML = `
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>핵심 수치</th>
+          <th>상태</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rowsHtml}
       </tbody>
     `;
 
