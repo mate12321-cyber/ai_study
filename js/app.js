@@ -15,9 +15,6 @@
   const btnDashExportDemo = document.getElementById('btnDashExportDemo');
   const glossarySearchInput = document.getElementById('glossarySearchInput');
   const glossaryGrid = document.getElementById('glossaryGrid');
-  const readinessChecklist = document.getElementById('readinessChecklist');
-  const readinessCountBadge = document.getElementById('readinessCountBadge');
-  const btnResetChecklist = document.getElementById('btnResetChecklist');
   let toastTimer = null;
 
   // Gemini elements
@@ -208,62 +205,6 @@
     fontSizeToggle.textContent = isLarge ? '🔍 기본 크기로' : '🔍 글자 더 크게 (가+)';
     showToast(isLarge ? '특대 글자 모드가 적용되었습니다.' : '기본 글자 크기로 전환되었습니다.');
   });
-
-  // Pre-class Readiness Checklist with localStorage persistence
-  function updateChecklistUI() {
-    if (!readinessChecklist) return;
-    const boxes = readinessChecklist.querySelectorAll('input[type="checkbox"]');
-    let doneCount = 0;
-    boxes.forEach((box) => {
-      const item = box.closest('.check-item');
-      if (box.checked) {
-        doneCount += 1;
-        if (item) item.classList.add('checked');
-      } else if (item) {
-        item.classList.remove('checked');
-      }
-    });
-    if (readinessCountBadge) {
-      readinessCountBadge.textContent = `${doneCount} / ${boxes.length} 완료`;
-      readinessCountBadge.classList.toggle('all-done', doneCount === boxes.length);
-    }
-  }
-
-  if (readinessChecklist) {
-    const boxes = readinessChecklist.querySelectorAll('input[type="checkbox"]');
-    boxes.forEach((box) => {
-      const key = `ai_study_check_${box.dataset.checkId}`;
-      try {
-        box.checked = localStorage.getItem(key) === '1';
-      } catch (err) {
-        // ignore storage restrictions
-      }
-      box.addEventListener('change', () => {
-        try {
-          localStorage.setItem(key, box.checked ? '1' : '0');
-        } catch (err) {
-          // ignore
-        }
-        updateChecklistUI();
-      });
-    });
-    updateChecklistUI();
-
-    if (btnResetChecklist) {
-      btnResetChecklist.addEventListener('click', () => {
-        boxes.forEach((box) => {
-          box.checked = false;
-          try {
-            localStorage.removeItem(`ai_study_check_${box.dataset.checkId}`);
-          } catch (err) {
-            // ignore
-          }
-        });
-        updateChecklistUI();
-        showToast('사전 점검 체크리스트가 초기화되었습니다.');
-      });
-    }
-  }
 
   // Render Templates Helper
   function renderTemplates(container, list, onRunInSimulator) {
