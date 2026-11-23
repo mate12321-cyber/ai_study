@@ -205,8 +205,8 @@
     const isLarge = document.body.classList.toggle('large-text');
     fontSizeToggle.classList.toggle('active', isLarge);
     fontSizeToggle.setAttribute('aria-pressed', String(isLarge));
-    fontSizeToggle.textContent = isLarge ? '🔍 기본 글자' : '🔍 글자 크게';
-    showToast(isLarge ? '큰 글자 모드가 적용되었습니다.' : '기본 글자 크기로 전환되었습니다.');
+    fontSizeToggle.textContent = isLarge ? '🔍 기본 크기로' : '🔍 글자 더 크게 (가+)';
+    showToast(isLarge ? '특대 글자 모드가 적용되었습니다.' : '기본 글자 크기로 전환되었습니다.');
   });
 
   // Pre-class Readiness Checklist with localStorage persistence
@@ -1958,12 +1958,12 @@
     // Grid lines
     [0, 25, 50, 75, 100].forEach((tick) => {
       const y = 180 - (tick / maxVal) * 145;
-      svgParts += `<line x1="36" y1="${y}" x2="${svgW - 10}" y2="${y}" stroke="#e2e8f0" stroke-dasharray="3 3" />`;
-      svgParts += `<text x="6" y="${y + 4}" font-size="11" fill="#64748b">${tick}%</text>`;
+      svgParts += `<line x1="40" y1="${y}" x2="${svgW - 10}" y2="${y}" stroke="#cbd5e1" stroke-dasharray="3 3" />`;
+      svgParts += `<text x="6" y="${y + 4}" font-size="12" font-weight="600" fill="#334155">${tick}%</text>`;
     });
 
     bars.forEach((b, i) => {
-      const x = 48 + i * (barW + gap);
+      const x = 50 + i * (barW + gap);
       const h = (b.value / maxVal) * 145;
       const y = 180 - h;
       svgParts += `
@@ -1971,8 +1971,8 @@
           <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="6" fill="${b.color}">
             <title>${b.name}: ${b.value}% (클릭하여 상세 보기)</title>
           </rect>
-          <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" font-size="12" font-weight="700" fill="#0f172a">${b.value}%</text>
-          <text x="${x + barW / 2}" y="202" text-anchor="middle" font-size="11.5" font-weight="600" fill="#334155">${b.name}</text>
+          <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">${b.value}%</text>
+          <text x="${x + barW / 2}" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">${b.name}</text>
         </g>
       `;
     });

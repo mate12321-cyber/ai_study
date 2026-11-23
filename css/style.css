@@ -1,23 +1,23 @@
 :root {
-  --bg: #f4f6f9;
+  --bg: #eef2f6;
   --surface: #ffffff;
   --surface-alt: #f8fafc;
-  --border: #e2e8f0;
+  --border: #cbd5e1;
   --text: #0f172a;
-  --text-muted: #475569;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --text-muted: #334155;
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
   --primary-soft: #eff6ff;
-  --amber: #d97706;
+  --amber: #b45309;
   --amber-soft: #fef3c7;
-  --green: #059669;
+  --green: #047857;
   --green-soft: #ecfdf5;
-  --red: #dc2626;
+  --red: #b91c1c;
   --red-soft: #fef2f2;
   --terminal-bg: #111827;
-  --terminal-text: #e5e7eb;
-  --radius: 14px;
-  --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --terminal-text: #f3f4f6;
+  --radius: 16px;
+  --shadow: 0 6px 24px rgba(15, 23, 42, 0.07);
 }
 
 * {
@@ -33,12 +33,14 @@ body {
   font-family: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
-  font-size: 16px;
+  line-height: 1.78;
+  font-size: 17.5px;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
 }
 
 body.large-text {
-  font-size: 18.5px;
+  font-size: 20px;
 }
 
 code, pre {
@@ -4839,4 +4841,555 @@ a.curr-pill.highlight:hover {
   background: #d97706;
   color: #ffffff;
   border-color: #b45309;
+}
+
+/* =========================================================
+   50+ Senior / Executive Comfort & High-Readability Refinements
+   ========================================================= */
+/* 1. Crisp, high-contrast inline code & keyboard badges */
+code {
+  background: #e2e8f0;
+  color: #9f1239;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.92em;
+  font-weight: 600;
+}
+
+kbd {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 0.86em;
+  font-weight: 700;
+  box-shadow: 0 2px 0 #0f172a;
+}
+
+/* 2. Generous Topbar & Sidebar Navigation */
+.layout {
+  grid-template-columns: 295px minmax(0, 1fr);
+  gap: 36px;
+  padding: 32px 36px;
+}
+
+.brand-badge {
+  font-size: 0.85rem;
+  padding: 5px 12px;
+}
+
+.brand-title {
+  font-size: 1.3rem;
+}
+
+.active-domain-pill {
+  font-size: 0.88rem;
+  padding: 5px 14px;
+}
+
+.domain-btn {
+  padding: 10px 18px;
+  font-size: 0.96rem;
+  font-weight: 700;
+}
+
+.icon-btn {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border-width: 1.5px;
+}
+
+.nav-list {
+  padding: 14px;
+  gap: 8px;
+  border-width: 1.5px;
+}
+
+.nav-item {
+  padding: 13px 14px;
+  border-radius: 12px;
+}
+
+.nav-step {
+  width: 34px;
+  height: 34px;
+  font-size: 0.96rem;
+  border-radius: 10px;
+}
+
+.nav-title {
+  font-size: 1.02rem;
+  margin-bottom: 2px;
+}
+
+.nav-meta {
+  font-size: 0.88rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.sidebar-tip {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  padding: 16px 18px;
+  border-width: 1.5px;
+}
+
+/* 3. Hero Banner & Section Headers */
+.hero-card {
+  padding: 40px 42px;
+}
+
+.hero-tag {
+  font-size: 0.92rem;
+  padding: 6px 14px;
+}
+
+.hero-card h2 {
+  font-size: 2rem;
+  line-height: 1.42;
+  margin-bottom: 16px;
+}
+
+.hero-desc {
+  font-size: 1.06rem;
+  line-height: 1.78;
+  color: #e2e8f0;
+}
+
+.curr-pill {
+  padding: 11px 18px;
+  font-size: 0.95rem;
+}
+
+.curr-pill span {
+  font-size: 0.84rem;
+  margin-bottom: 2px;
+}
+
+.module-section {
+  gap: 24px;
+}
+
+.module-header {
+  border-left-width: 6px;
+  padding-left: 18px;
+}
+
+.module-badge {
+  font-size: 0.88rem;
+  padding: 4px 12px;
+}
+
+.module-header h3 {
+  font-size: 1.6rem;
+  margin: 4px 0 8px;
+}
+
+.module-header p {
+  font-size: 1.04rem;
+  color: #334155;
+  line-height: 1.72;
+}
+
+/* 4. Cards, Lists, Q&A, Templates, Glossary */
+.card {
+  padding: 28px 30px;
+  border-width: 1.5px;
+}
+
+.card h4 {
+  font-size: 1.22rem;
+  margin-bottom: 14px;
+  line-height: 1.45;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.75;
+}
+
+.clean-list {
+  gap: 11px;
+  font-size: 1rem;
+}
+
+.win-step {
+  padding: 13px 16px;
+  font-size: 1rem;
+}
+
+.step-num {
+  width: 30px;
+  height: 30px;
+  font-size: 0.95rem;
+}
+
+.check-item {
+  padding: 15px 18px;
+  font-size: 1rem;
+}
+
+.check-item input {
+  width: 22px;
+  height: 22px;
+}
+
+.compare-box {
+  padding: 22px;
+  border-width: 1.5px;
+}
+
+.compare-label {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.compare-box p {
+  font-size: 0.98rem;
+  color: #334155;
+  line-height: 1.68;
+}
+
+.template-card {
+  padding: 20px 22px;
+  border-width: 1.5px;
+}
+
+.template-title {
+  font-size: 1.06rem;
+  margin-bottom: 8px;
+}
+
+.template-text {
+  font-size: 0.96rem;
+  color: #1e293b;
+  line-height: 1.72;
+}
+
+.copy-btn,
+.run-sim-btn {
+  padding: 9px 16px;
+  font-size: 0.92rem;
+  border-radius: 10px;
+}
+
+.qa-item {
+  padding: 20px 22px;
+  border-width: 1.5px;
+}
+
+.qa-item strong {
+  font-size: 1.04rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.qa-item p {
+  font-size: 0.97rem;
+  color: #1e293b;
+  line-height: 1.74;
+}
+
+.cheat-item {
+  padding: 15px 16px;
+  font-size: 0.98rem;
+  border-width: 1.5px;
+}
+
+.glossary-search-input {
+  max-width: 540px;
+  padding: 13px 18px;
+  font-size: 1rem;
+  border-width: 1.5px;
+}
+
+.glossary-card {
+  padding: 22px;
+  border-width: 1.5px;
+}
+
+.glossary-card strong {
+  font-size: 1.06rem;
+  margin-bottom: 8px;
+}
+
+.glossary-card p {
+  font-size: 0.96rem;
+  color: #334155;
+  line-height: 1.7;
+}
+
+/* 5. Simulator Guide Bars & Stepper Pills */
+.sim-guide-bar {
+  padding: 15px 22px;
+  border-width: 1.5px;
+}
+
+.sim-guide-title {
+  font-size: 1.02rem;
+}
+
+.sim-guide-badge {
+  font-size: 0.82rem;
+  padding: 4px 11px;
+}
+
+.sim-step,
+.mcp-flow-step {
+  font-size: 0.9rem;
+  padding: 6px 14px;
+}
+
+.sim-reset-pill,
+.view-btn {
+  font-size: 0.88rem;
+  padding: 7px 14px;
+}
+
+/* 6. Gemini Deep Research Simulator Comfort Adjustments */
+.gemini-shell.dark-gemini .gem-history-item,
+.gem-menu-item {
+  font-size: 0.9rem;
+  padding: 9px 12px;
+}
+
+.gem-demo-cta {
+  padding: 13px 24px;
+  font-size: 1rem;
+}
+
+.gem-scenario-chip {
+  padding: 10px 18px;
+  font-size: 0.94rem;
+}
+
+.gem-bubble-text,
+.gem-plan-intro,
+.gem-tl-item,
+.plan-list {
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.gem-plan-title,
+.gem-panel-title {
+  font-size: 1.12rem;
+}
+
+.gem-btn-primary,
+.gem-btn-secondary,
+.gem-canvas-btn {
+  padding: 10px 18px;
+  font-size: 0.92rem;
+}
+
+.gem-site-chip,
+.gem-query-pill {
+  font-size: 0.88rem;
+  padding: 8px 14px;
+}
+
+.report-body {
+  padding: 22px 24px;
+  font-size: 1rem;
+  line-height: 1.76;
+}
+
+.report-body h5 {
+  font-size: 1.18rem;
+  margin-bottom: 10px;
+}
+
+.gem-report-table {
+  font-size: 0.92rem;
+}
+
+.gem-report-table th,
+.gem-report-table td {
+  padding: 10px 12px;
+}
+
+.gem-source-row {
+  font-size: 0.9rem;
+  padding: 10px 12px;
+}
+
+.src-snippet {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+}
+
+.gem-disclaimer {
+  font-size: 0.84rem;
+  color: #c4c7c5;
+}
+
+/* 7. Claude Code TUI & MCP Simulator Eye-Comfort Adjustments */
+.claude-sim.cli-mode {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+.ps-boot-line {
+  font-size: 0.92rem;
+}
+
+.cli-welcome-box {
+  font-size: 0.92rem;
+  padding: 13px 16px;
+}
+
+.cli-w-title {
+  font-size: 1.04rem;
+}
+
+.cli-w-row {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.cli-folder-inline-bar {
+  font-size: 0.88rem;
+  padding: 9px 13px;
+}
+
+.cfi-chip {
+  font-size: 0.86rem;
+  padding: 5px 12px;
+}
+
+.claude-sim.cli-mode .chat-msg {
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.claude-sim.cli-mode .chat-msg.system {
+  color: #cbd5e1;
+}
+
+.tui-tool-group {
+  font-size: 0.92rem;
+}
+
+.tui-tool-sub {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.claude-diff-box,
+.mcp-raw-output,
+.preview-code-box,
+.perm-tool-spec {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  padding: 11px 14px;
+}
+
+.quick-bar-label {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.prompt-chip {
+  padding: 10px 16px;
+  font-size: 0.93rem;
+}
+
+.claude-sim.cli-mode .claude-user-input {
+  font-size: 0.98rem;
+}
+
+.claude-sim.cli-mode .claude-send-btn {
+  padding: 8px 16px;
+  font-size: 0.88rem;
+}
+
+.claude-status-line {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+}
+
+.mcp-slash-chip {
+  font-size: 0.84rem;
+  padding: 4px 12px;
+}
+
+.perm-modal-header,
+.perm-question {
+  font-size: 0.96rem;
+}
+
+.mcp-opt-btn {
+  font-size: 0.92rem;
+  padding: 10px 14px;
+}
+
+.preview-pane-body {
+  font-size: 0.92rem;
+  line-height: 1.68;
+}
+
+.preview-table {
+  font-size: 0.88rem;
+}
+
+/* 8. Dynamic Dashboard Comfort Adjustments */
+.dash-header h4 {
+  font-size: 1.38rem;
+}
+
+.dash-header p {
+  font-size: 0.98rem;
+}
+
+.dash-filter-label {
+  font-size: 0.9rem;
+  padding: 6px 10px 6px 14px;
+}
+
+.dash-filter-label select {
+  font-size: 0.95rem;
+}
+
+.dash-alert-filter-btn,
+.dash-print-btn {
+  font-size: 0.9rem;
+  padding: 10px 16px;
+}
+
+.kpi-card {
+  padding: 20px;
+}
+
+.kpi-label {
+  font-size: 0.92rem;
+  color: #334155;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+}
+
+.kpi-delta {
+  font-size: 0.88rem;
+}
+
+.dash-card-title {
+  font-size: 1.06rem;
+}
+
+.dash-table {
+  font-size: 0.95rem;
+}
+
+.dash-table th,
+.dash-table td {
+  padding: 12px 10px;
+}
+
+.status-pill {
+  font-size: 0.85rem;
+  padding: 4px 11px;
 }
