@@ -77,9 +77,10 @@ kbd {
 }
 
 .topbar-inner {
-  max-width: 1320px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 12px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -160,12 +161,13 @@ kbd {
 
 /* Layout */
 .layout {
-  max-width: 1320px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 28px 24px;
+  padding: 28px 32px;
   display: grid;
-  grid-template-columns: 270px 1fr;
-  gap: 28px;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 32px;
   align-items: start;
 }
 
@@ -315,7 +317,7 @@ kbd {
 .hero-desc {
   margin: 0 0 24px;
   color: #cbd5e1;
-  max-width: 780px;
+  max-width: 1180px;
 }
 
 .curriculum-strip {
@@ -794,6 +796,34 @@ kbd {
   font-weight: 600;
   color: #e3e3e3;
   margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.gem-demo-cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.gem-demo-cta {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: 1px solid rgba(147, 197, 253, 0.45);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.gem-demo-cta:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
 }
 
 .gem-user-bubble {
@@ -884,8 +914,8 @@ kbd {
 
 .gem-split-view {
   display: grid;
-  grid-template-columns: 230px 1fr;
-  gap: 14px;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
 }
 
@@ -931,8 +961,9 @@ kbd {
   background: #1a1b1e;
   border: 1px solid #2e3138;
   border-radius: 16px;
-  padding: 18px;
-  max-height: 430px;
+  padding: 22px;
+  min-height: 540px;
+  max-height: 760px;
   overflow-y: auto;
 }
 
@@ -1044,13 +1075,6 @@ kbd {
     grid-template-columns: 1fr;
   }
 }
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  font-size: 0.96rem;
-  color: #8ab4f8;
-}
 
 .gem-plan-actions {
   display: flex;
@@ -1084,52 +1108,59 @@ kbd {
 }
 
 .gem-input-dock {
-  padding: 10px 24px 18px;
+  padding: 14px 28px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .gem-input-box {
   width: 100%;
-  border: 1px solid #3c4043;
-  border-radius: 20px;
-  padding: 14px 16px;
+  border: 1.5px solid #4a4f57;
+  border-radius: 24px;
+  padding: 18px 22px;
   background: #1e1f24;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.gem-input-box:focus-within {
+  border-color: #8ab4f8;
 }
 
 .gem-input-textarea {
   width: 100%;
+  min-height: 98px;
   border: none;
   background: transparent;
-  color: #e3e3e3;
+  color: #f1f3f4;
   font-family: inherit;
-  font-size: 0.92rem;
-  resize: none;
+  font-size: 1.05rem;
+  resize: vertical;
   outline: none;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  margin-bottom: 12px;
+  line-height: 1.65;
 }
 
 .gem-input-textarea::placeholder {
-  color: #8e918f;
+  color: #9aa0a6;
 }
 
 .gem-fill-btn {
-  background: transparent;
-  border: 1px solid #3c4043;
-  color: #c4c7c5;
-  font-size: 0.76rem;
-  padding: 4px 10px;
+  background: rgba(138, 180, 248, 0.12);
+  border: 1px solid rgba(138, 180, 248, 0.35);
+  color: #d2e3fc;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 6px 14px;
   border-radius: 999px;
   cursor: pointer;
   font-family: inherit;
 }
 
 .gem-fill-btn:hover {
-  background: #282a2f;
+  background: rgba(138, 180, 248, 0.24);
   color: #fff;
 }
 
@@ -1150,13 +1181,13 @@ kbd {
 }
 
 .gem-plus-btn {
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1px solid #3c4043;
+  border: 1px solid #4a4f57;
   background: #282a2f;
   color: #e3e3e3;
-  font-size: 1rem;
+  font-size: 1.15rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1256,13 +1287,13 @@ kbd {
 }
 
 .gem-send-btn {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background: #1a73e8;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1473,7 +1504,7 @@ kbd {
 .claude-sim {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 390px;
+  min-height: 720px;
 }
 
 .claude-sim.cli-mode {
@@ -1539,8 +1570,9 @@ kbd {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-height: 320px;
+  gap: 12px;
+  min-height: 440px;
+  max-height: 620px;
   overflow-y: auto;
 }
 
@@ -1881,30 +1913,41 @@ button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-
 
 .claude-cli-footer {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid #374151;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1.5px solid #4b5563;
   background: #0b0f19;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  font-size: 1rem;
   color: #9ca3af;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.claude-cli-footer:focus-within {
+  border-color: #60a5fa;
 }
 
 .cli-prompt-arrow {
   color: #60a5fa;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-top: 2px;
 }
 
 .claude-user-input {
   flex: 1;
+  min-height: 76px;
   background: transparent;
   border: none;
   outline: none;
-  color: #f3f4f6;
+  color: #f9fafb;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  resize: vertical;
 }
 
 .claude-sim.app-mode .claude-user-input {
@@ -1912,12 +1955,13 @@ button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-
 }
 
 .claude-send-btn {
+  align-self: flex-end;
   background: #2563eb;
   color: #fff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.94rem;
   font-weight: 700;
   cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
@@ -1934,12 +1978,12 @@ button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-
   background: #111827;
   color: #e5e7eb;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 110px;
-  font-size: 0.9rem;
+  gap: 14px;
+  min-height: 280px;
+  font-size: 0.92rem;
 }
 
 .mcp-cli-perm {
@@ -1985,11 +2029,12 @@ button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-
 
 /* Dynamic Dashboard */
 .dash-app {
-  padding: 24px;
+  padding: 28px;
   background: #f8fafc;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  min-height: 560px;
 }
 
 .dash-header {
@@ -2190,4 +2235,2494 @@ button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-
   .claude-sim.app-mode {
     grid-template-columns: 1fr;
   }
+}
+
+/* =========================================================
+   Authentic Browser Frame & Gemini Deep Research Upgrades
+   ========================================================= */
+.browser-chrome {
+  background: #202124;
+  border-bottom: 1px solid #3c4043;
+  color: #e8eaed;
+  user-select: none;
+}
+
+.browser-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 0;
+  background: #17181b;
+}
+
+.win-traffic {
+  display: flex;
+  gap: 6px;
+  margin-right: 8px;
+  padding-bottom: 6px;
+}
+
+.win-traffic span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.win-traffic span:nth-child(1) { background: #ff5f56; }
+.win-traffic span:nth-child(2) { background: #ffbd2e; }
+.win-traffic span:nth-child(3) { background: #27c93f; }
+
+.browser-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #292a2d;
+  color: #e8eaed;
+  padding: 7px 14px;
+  border-radius: 10px 10px 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 210px;
+}
+
+.tab-gem-icon {
+  color: #8ab4f8;
+  font-size: 0.9rem;
+}
+
+.tab-close {
+  margin-left: auto;
+  color: #9aa0a6;
+  font-size: 0.9rem;
+}
+
+.browser-tab-plus {
+  color: #9aa0a6;
+  font-size: 0.9rem;
+  padding: 0 6px 4px;
+}
+
+.browser-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 14px;
+  background: #292a2d;
+  flex-wrap: wrap;
+}
+
+.browser-nav-btns {
+  display: flex;
+  gap: 12px;
+  color: #9aa0a6;
+  font-size: 0.88rem;
+}
+
+.browser-omnibox {
+  flex: 1;
+  background: #1e1f22;
+  border: 1px solid #3c4043;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.8rem;
+  color: #e8eaed;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 540px;
+}
+
+.omni-lock {
+  font-size: 0.75rem;
+}
+.omni-domain {
+  color: #ffffff;
+  font-weight: 600;
+}
+.omni-path {
+  color: #9aa0a6;
+}
+
+/* Collapsible Gemini Sidebar */
+.gemini-shell.dark-gemini {
+  grid-template-columns: 255px 1fr;
+  min-height: 760px;
+  background: #131314;
+  transition: grid-template-columns 0.2s ease;
+}
+
+.gemini-shell.dark-gemini.sidebar-collapsed {
+  grid-template-columns: 64px 1fr;
+}
+
+.gemini-shell.dark-gemini.sidebar-collapsed .side-label {
+  display: none;
+}
+
+.gemini-shell.dark-gemini .gemini-sidebar {
+  background: #1e1f20;
+  border-right: 1px solid #2d2f31;
+  padding: 12px 10px;
+  justify-content: flex-start;
+}
+
+.gem-side-top {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px 8px;
+}
+
+.gem-hamburger {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #c4c7c5;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.gem-hamburger:hover {
+  background: #2d2f31;
+  color: #fff;
+}
+
+.gemini-shell.dark-gemini .gem-new-chat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #282a2c;
+  color: #e3e3e3;
+  padding: 10px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.gem-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gemini-shell.dark-gemini .gem-history-item {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gemini-shell.dark-gemini .gem-history-item:hover {
+  background: #282a2c;
+}
+
+.gem-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gem-side-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #2d2f31;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gem-loc-note {
+  font-size: 0.72rem;
+  color: #8e918f;
+  padding: 6px 10px 2px;
+}
+
+/* Gemini Model Picker Dropdown */
+.gem-model-picker-wrap {
+  position: relative;
+}
+
+.gem-model-dropdown-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 6px 10px;
+  color: #e3e3e3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.gem-model-dropdown-btn:hover {
+  background: #282a2c;
+}
+
+.gem-brand-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.gem-current-model {
+  font-size: 0.8rem;
+  color: #a8c7fa;
+  background: rgba(168, 199, 250, 0.14);
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.gem-model-menu {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 310px;
+  background: #282a2c;
+  border: 1px solid #3c4043;
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  z-index: 30;
+}
+.gem-model-menu.open {
+  display: block;
+}
+
+.gem-mm-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9aa0a6;
+  padding: 4px 10px 6px;
+}
+
+.gem-mm-item {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #e3e3e3;
+  text-align: left;
+  padding: 9px 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.gem-mm-item:hover {
+  background: #333538;
+}
+.gem-mm-item.active {
+  background: rgba(168, 199, 250, 0.14);
+}
+.gem-mm-item strong {
+  display: block;
+  font-size: 0.85rem;
+}
+.gem-mm-item span {
+  font-size: 0.76rem;
+  color: #9aa0a6;
+}
+.mm-check {
+  color: #a8c7fa !important;
+  font-weight: 800;
+}
+
+.gem-adv-badge {
+  background: linear-gradient(90deg, #3b82f6, #a855f7);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.gem-profile-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gem-hello-gradient {
+  font-size: 1.75rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #4285f4 0%, #9b72cb 50%, #d96570 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gem-hello-sub {
+  font-size: 1.15rem;
+  color: #8e918f;
+  font-weight: 500;
+}
+
+.gem-sparkle-spin {
+  display: inline-block;
+  color: #a8c7fa;
+  font-size: 1.1rem;
+  animation: spin 1.6s linear infinite;
+}
+
+.gem-ai-icon {
+  color: #a8c7fa;
+  font-size: 1.05rem;
+  margin-right: 6px;
+}
+
+.gem-plan-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.plan-badge {
+  align-self: flex-start;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #a8c7fa;
+  background: rgba(168, 199, 250, 0.14);
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.gem-plan-edit-box {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.gem-plan-edit-box input {
+  flex: 1;
+  background: #131314;
+  border: 1px solid #5f6368;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: #fff;
+  font-size: 0.84rem;
+  font-family: inherit;
+}
+
+.gem-btn-primary.sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.mini-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.25);
+  flex-shrink: 0;
+}
+.mini-pulse.done {
+  background: #34d399;
+  box-shadow: none;
+}
+
+.gem-canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.canvas-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #a8c7fa;
+}
+
+.canvas-timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  color: #9aa0a6;
+}
+
+.gem-scan-progress-bar {
+  height: 6px;
+  background: #282a2c;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.gem-scan-progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #4285f4, #a855f7);
+  transition: width 0.5s ease;
+}
+
+.gem-search-queries {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.gem-query-pill {
+  background: #202124;
+  border: 1px solid #3c4043;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.report-toolbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.gem-canvas-btn {
+  background: #282a2c;
+  color: #e3e3e3;
+  border: 1px solid #3c4043;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.gem-canvas-btn:hover {
+  background: #333538;
+}
+.gem-canvas-btn.primary {
+  background: #1a73e8;
+  border-color: #1a73e8;
+  color: #fff;
+}
+
+.report-meta {
+  font-size: 0.78rem;
+  color: #9aa0a6;
+  margin: 0 0 12px;
+}
+
+.gem-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 0.82rem;
+}
+
+.gem-report-table th,
+.gem-report-table td {
+  border: 1px solid #3c4043;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.gem-report-table th {
+  background: #202124;
+  color: #a8c7fa;
+}
+
+.citation {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.citation:hover {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.gem-source-row {
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #131417;
+  border: 1px solid #282a2c;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.gem-source-row.highlight {
+  border-color: #60a5fa;
+  background: rgba(37, 99, 235, 0.22);
+}
+
+.src-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.src-num {
+  color: #8ab4f8;
+  font-weight: 700;
+}
+
+.src-domain {
+  margin-left: auto;
+  color: #9aa0a6;
+  font-size: 0.76rem;
+}
+
+.src-snippet {
+  font-size: 0.78rem;
+  color: #9aa0a6;
+}
+
+.gem-followup-log {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.gem-followup-turn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.gem-fu-user {
+  align-self: flex-end;
+  background: #282a2f;
+  color: #fff;
+  padding: 7px 11px;
+  border-radius: 12px;
+}
+
+.gem-fu-ai {
+  background: #1e1f24;
+  border: 1px solid #3c4043;
+  color: #e3e3e3;
+  padding: 9px 11px;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.gem-disclaimer {
+  font-size: 0.74rem;
+  color: #8e918f;
+  text-align: center;
+}
+
+/* =========================================================
+   Authentic Windows 11 Terminal & Claude Code App Upgrades
+   ========================================================= */
+.win11-titlebar {
+  background: #1f2430;
+  border-bottom: 1px solid #334155;
+  padding: 8px 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #e2e8f0;
+}
+
+.win11-tabs {
+  display: flex;
+  align-items: center;
+}
+
+.win11-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0d1117;
+  color: #f8fafc;
+  padding: 8px 16px;
+  border-radius: 10px 10px 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid #334155;
+  border-bottom: none;
+}
+
+.win11-tab-icon {
+  color: #fb923c;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.win11-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 6px;
+}
+
+.win11-window-btns {
+  display: flex;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  padding: 0 6px;
+}
+.win11-window-btns .close:hover {
+  color: #f87171;
+}
+
+/* Show File Explorer Sidebar in BOTH CLI and Desktop App modes so managers can click files */
+.claude-sim.cli-mode {
+  grid-template-columns: 235px 1fr;
+  background: #0d1117;
+}
+
+.claude-sim.cli-mode .claude-app-sidebar {
+  display: block;
+  background: #161b22;
+  border-right: 1px solid #30363d;
+  color: #e6edf3;
+}
+
+.claude-sim.cli-mode .app-sidebar-top {
+  color: #f0f6fc;
+}
+
+.claude-sim.cli-mode .sidebar-folder {
+  border-bottom-color: #30363d;
+  color: #fb923c;
+}
+
+.app-sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-sync-badge {
+  font-size: 0.7rem;
+  background: rgba(16, 185, 129, 0.16);
+  color: #34d399;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.sidebar-hint {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.file-tree-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.claude-sim.cli-mode .file-tree-item {
+  color: #cbd5e1;
+}
+.claude-sim.cli-mode .file-tree-item:hover {
+  background: #21262d;
+  color: #fff;
+}
+.claude-sim.cli-mode .file-tree-item.active {
+  background: rgba(59, 130, 246, 0.24);
+  color: #93c5fd;
+  font-weight: 700;
+}
+
+.claude-sim.app-mode .file-tree-item:hover {
+  background: #e2e8f0;
+}
+.claude-sim.app-mode .file-tree-item.active {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.file-tree-item.is-new {
+  border: 1px dashed #fb923c;
+}
+
+.file-view-tag {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  background: rgba(148, 163, 184, 0.18);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* Authentic Claude Code Welcome Box */
+.cli-welcome-box {
+  border: 1px solid #d97706;
+  background: rgba(217, 119, 6, 0.07);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.84rem;
+}
+
+.cli-w-title {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.claude-star {
+  color: #fb923c;
+  font-weight: 800;
+}
+
+.cli-ver {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cli-w-row {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.cli-cwd-path {
+  font-family: 'JetBrains Mono', monospace;
+  color: #fbbf24;
+}
+.claude-sim.app-mode .cli-cwd-path {
+  color: #b45309;
+}
+
+.claude-diff-box {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 6px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.diff-add {
+  color: #34d399;
+}
+.claude-sim.app-mode .diff-add {
+  color: #047857;
+}
+
+.claude-preview-trigger-row {
+  margin-top: 8px;
+}
+
+.claude-inline-preview-btn {
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid #60a5fa;
+  color: #93c5fd;
+  padding: 5px 11px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.claude-sim.app-mode .claude-inline-preview-btn {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.claude-quick-bar {
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  padding-top: 10px;
+}
+
+.quick-bar-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.claude-quick-prompts {
+  border-top: none;
+  padding-top: 0;
+}
+
+.prompt-chip.done {
+  border-color: #34d399;
+}
+
+.claude-status-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 6px;
+  padding: 0 4px;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', sans-serif;
+}
+
+.cs-model {
+  color: #fb923c;
+  font-weight: 700;
+}
+
+.cs-sep {
+  margin: 0 6px;
+  opacity: 0.4;
+}
+
+/* Right File / Artifact Preview Drawer inside Claude Code */
+.claude-sim {
+  position: relative;
+}
+
+.claude-main-pane,
+.claude-preview-pane,
+.claude-app-sidebar {
+  min-width: 0;
+}
+
+.claude-sim.cli-mode.preview-open,
+.claude-sim.cli-mode:has(.claude-preview-pane:not(.hidden)) {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 410px);
+}
+
+.claude-sim.app-mode.preview-open,
+.claude-sim.app-mode:has(.claude-preview-pane:not(.hidden)) {
+  grid-template-columns: 215px minmax(0, 1fr) minmax(300px, 380px);
+}
+
+.claude-preview-pane {
+  border-left: 1px solid #30363d;
+  background: #161b22;
+  color: #e6edf3;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-height: 860px;
+  overflow: hidden;
+}
+
+.claude-sim.app-mode .claude-preview-pane {
+  background: #f8fafc;
+  border-left-color: var(--border);
+  color: var(--text);
+}
+
+.preview-pane-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid #30363d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.claude-sim.app-mode .preview-pane-header {
+  border-bottom-color: var(--border);
+}
+
+.preview-badge {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fb923c;
+}
+
+.preview-close-btn {
+  background: transparent;
+  border: 1px solid #475569;
+  color: inherit;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.preview-pane-body {
+  padding: 14px;
+  overflow-y: auto;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.preview-code-box {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  border-radius: 8px;
+}
+.claude-sim.app-mode .preview-code-box {
+  background: #fff;
+  border: 1px solid var(--border);
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.preview-table th,
+.preview-table td {
+  border: 1px solid #475569;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.preview-doc h4 {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+}
+.preview-doc ul {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+.preview-dash-mini {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+}
+.pdm-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+.pdm-head span {
+  color: #059669;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.pdm-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.pdm-kpi {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 0.72rem;
+}
+.pdm-kpi span {
+  display: block;
+  color: #64748b;
+}
+.pdm-kpi.warn strong { color: #d97706; }
+.pdm-kpi.bad strong { color: #dc2626; }
+.pdm-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.74rem;
+}
+.pdm-bar-row {
+  display: grid;
+  grid-template-columns: 92px 1fr 34px;
+  align-items: center;
+  gap: 6px;
+}
+.pdm-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.pdm-bar i {
+  display: block;
+  height: 100%;
+}
+.pdm-foot {
+  margin: 10px 0 0;
+  font-size: 0.72rem;
+  color: #475569;
+}
+
+@media (max-width: 1180px) {
+  .claude-sim.app-mode.preview-open,
+  .claude-sim.app-mode:has(.claude-preview-pane:not(.hidden)) {
+    grid-template-columns: 195px minmax(0, 1fr);
+  }
+  .claude-sim.cli-mode.preview-open,
+  .claude-sim.cli-mode:has(.claude-preview-pane:not(.hidden)) {
+    grid-template-columns: 1fr;
+  }
+  .claude-preview-pane {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 2px solid #38bdf8;
+    min-height: auto;
+    max-height: 460px;
+  }
+}
+
+@media (max-width: 860px) {
+  .claude-sim.app-mode,
+  .claude-sim.app-mode.preview-open,
+  .claude-sim.app-mode:has(.claude-preview-pane:not(.hidden)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   UI/UX Overhaul: Progress, Navigation, Sim Stepper, Polish
+   ========================================================= */
+.top-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 120;
+  pointer-events: none;
+}
+
+.top-scroll-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #10b981 100%);
+  transition: width 0.1s ease-out;
+}
+
+.active-domain-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1px solid #bfdbfe;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+@media (max-width: 720px) {
+  .active-domain-pill {
+    display: none;
+  }
+}
+
+/* Interactive Curriculum Pills */
+a.curr-pill {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+a.curr-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+a.curr-pill.highlight:hover {
+  background: rgba(37, 99, 235, 0.78);
+  border-color: #93c5fd;
+}
+
+/* Readiness Checklist Improvements */
+.card-sub-note {
+  margin: 4px 0 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.readiness-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.readiness-badge {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+}
+
+.readiness-badge.all-done {
+  background: var(--green-soft);
+  color: var(--green);
+  border-color: #a7f3d0;
+}
+
+.check-item.checked {
+  background: var(--green-soft);
+  border-color: #a7f3d0;
+}
+
+/* Simulator Guide Bar & Stepper */
+.sim-guide-bar {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.sim-guide-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.94rem;
+}
+
+.sim-guide-badge {
+  background: #0f172a;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.sim-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+
+.sim-step {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.sim-step.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+}
+
+.sim-step.done {
+  background: var(--green-soft);
+  border-color: #a7f3d0;
+  color: var(--green);
+}
+
+.sim-step-sep {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.sim-guide-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sim-guide-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.sim-reset-pill {
+  background: var(--surface-alt);
+  border: 1px solid #cbd5e1;
+  color: var(--text);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sim-reset-pill:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Claude Sim App Mode Light Contrast Fixes */
+.claude-sim.app-mode .win11-titlebar {
+  background: #f1f5f9;
+}
+
+.claude-sim.app-mode .cli-welcome-box {
+  background: #fffbeb;
+  border-color: #f59e0b;
+}
+
+.claude-sim.app-mode .cli-w-title {
+  color: #0f172a;
+}
+
+.claude-sim.app-mode .cli-w-row {
+  color: #475569;
+}
+
+.claude-sim.app-mode .quick-bar-label {
+  color: #475569;
+}
+
+.claude-sim.app-mode .claude-status-line {
+  color: #64748b;
+}
+
+.claude-sim.app-mode .preview-table th,
+.claude-sim.app-mode .preview-table td {
+  border-color: #cbd5e1;
+}
+
+.claude-sim.app-mode .preview-table th {
+  background: #f1f5f9;
+}
+
+/* Completed step indicator on Claude prompt chips */
+.prompt-chip {
+  transition: all 0.15s ease;
+}
+
+.prompt-chip:hover {
+  transform: translateY(-1px);
+  border-color: #60a5fa;
+}
+
+.prompt-chip.done {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #34d399;
+}
+
+.claude-sim.app-mode .prompt-chip.done {
+  background: var(--green-soft);
+  border-color: #34d399;
+  color: var(--green);
+}
+
+/* Dynamic Dashboard UX Enhancements */
+.dash-filter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  padding: 4px 6px 4px 12px;
+  border-radius: 10px;
+}
+
+.dash-filter-label select {
+  border: none;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.dash-print-btn {
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.dash-print-btn:hover {
+  background: #1e293b;
+}
+
+.dash-table tbody tr {
+  transition: background 0.15s;
+}
+
+.dash-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.dash-table tbody tr.row-highlight {
+  background: #eff6ff;
+}
+
+/* Glossary Search Toolbar */
+.glossary-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.glossary-search-input {
+  width: 100%;
+  max-width: 480px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: var(--surface);
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.glossary-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+/* Mobile Sticky Navigation Refinement */
+@media (max-width: 980px) {
+  .topbar-inner {
+    padding: 10px 16px;
+  }
+  .layout {
+    padding: 16px;
+    gap: 20px;
+  }
+  .sidebar {
+    position: sticky;
+    top: 61px;
+    z-index: 40;
+    background: rgba(244, 246, 249, 0.95);
+    backdrop-filter: blur(6px);
+    padding: 6px 0;
+  }
+  .sidebar-tip {
+    display: none;
+  }
+  .hero-card {
+    padding: 24px 20px;
+  }
+  .hero-card h2 {
+    font-size: 1.45rem;
+  }
+}
+
+/* =========================================================
+   Authentic Claude Code MCP Simulator Styles
+   ========================================================= */
+.mcp-active-pill {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.claude-sim.app-mode .mcp-active-pill {
+  color: #047857;
+  background: #d1fae5;
+  border-color: #6ee7b7;
+}
+
+.mcp-server-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mcp-server-card {
+  border: 1px solid #30363d;
+  background: #0d1117;
+  border-radius: 10px;
+  padding: 10px 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+}
+
+.mcp-server-card:hover {
+  border-color: #60a5fa;
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.mcp-server-card.active {
+  border-color: #fb923c;
+  background: rgba(251, 146, 60, 0.12);
+}
+
+.claude-sim.app-mode .mcp-server-card {
+  background: #ffffff;
+  border-color: var(--border);
+}
+
+.claude-sim.app-mode .mcp-server-card:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.claude-sim.app-mode .mcp-server-card.active {
+  border-color: #d97706;
+  background: #fffbeb;
+}
+
+.mcp-srv-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+.mcp-srv-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #93c5fd;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.claude-sim.app-mode .mcp-srv-name {
+  color: var(--primary);
+}
+
+.mcp-srv-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  flex-shrink: 0;
+}
+
+.mcp-srv-tools {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.16);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.mcp-srv-label {
+  font-size: 0.81rem;
+  font-weight: 700;
+  color: #e6edf3;
+  margin-bottom: 2px;
+}
+
+.claude-sim.app-mode .mcp-srv-label {
+  color: var(--text);
+}
+
+.mcp-srv-desc {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.35;
+  word-break: break-all;
+}
+
+.claude-sim.app-mode .mcp-srv-desc {
+  color: var(--text-muted);
+}
+
+.mcp-session-box {
+  margin-top: 14px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-size: 0.76rem;
+}
+
+.claude-sim.app-mode .mcp-session-box {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.mcp-session-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  color: #fcd34d;
+}
+
+.claude-sim.app-mode .mcp-session-row {
+  color: #b45309;
+}
+
+.mcp-session-note {
+  margin: 0;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.claude-sim.app-mode .mcp-session-note {
+  color: #78350f;
+}
+
+/* Authentic Claude Code Tool Permission Box inside Chat Log */
+.claude-perm-modal {
+  border: 1.5px solid #f59e0b;
+  background: #161b22;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.claude-sim.app-mode .claude-perm-modal {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.12);
+}
+
+.perm-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.claude-sim.app-mode .perm-modal-header {
+  color: #b45309;
+}
+
+.perm-tool-spec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+.claude-sim.app-mode .perm-tool-spec {
+  background: #ffffff;
+  border-color: #fde68a;
+  color: #1e293b;
+}
+
+.perm-question {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f8fafc;
+}
+
+.claude-sim.app-mode .perm-question {
+  color: #0f172a;
+}
+
+.claude-sim.app-mode .mcp-opt-btn {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #cbd5e1;
+}
+
+.claude-sim.app-mode .mcp-opt-btn:hover,
+.claude-sim.app-mode .mcp-opt-btn.recommended {
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.mcp-raw-output {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.77rem;
+  background: rgba(0, 0, 0, 0.28);
+  border-left: 3px solid #60a5fa;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 6px 0 10px;
+  white-space: pre-wrap;
+  color: #cbd5e1;
+}
+
+.claude-sim.app-mode .mcp-raw-output {
+  background: #f1f5f9;
+  color: #334155;
+  border-left-color: var(--primary);
+}
+
+.mcp-slash-chip {
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  color: #93c5fd;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mcp-slash-chip:hover {
+  background: rgba(59, 130, 246, 0.32);
+  color: #fff;
+}
+
+.claude-sim.app-mode .mcp-slash-chip {
+  background: var(--primary-soft);
+  border-color: #93c5fd;
+  color: var(--primary);
+}
+
+.mcp-flow-step.done {
+  background: var(--green-soft);
+  border-color: #a7f3d0;
+  color: var(--green);
+}
+
+/* =========================================================
+   Google Docs Exported Tab & Interactive Editor
+   ========================================================= */
+.browser-tab {
+  cursor: pointer;
+  opacity: 0.72;
+  background: #202124;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.browser-tab.active {
+  opacity: 1;
+  background: #292a2d;
+}
+
+.tab-docs-icon {
+  font-size: 0.9rem;
+}
+
+.gdocs-shell {
+  background: #f9fbfd;
+  color: #1f1f1f;
+  min-height: 760px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gdocs-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 18px 8px;
+  background: #f9fbfd;
+  border-bottom: 1px solid #e1e5ea;
+  flex-wrap: wrap;
+}
+
+.gdocs-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.gdocs-logo-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #e8f0fe;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.gdocs-doc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gdocs-title-input {
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 2px 6px;
+  border-radius: 5px;
+  min-width: 340px;
+}
+
+.gdocs-title-input:hover,
+.gdocs-title-input:focus {
+  border-color: #1a73e8;
+  background: #ffffff;
+  outline: none;
+}
+
+.gdocs-saved-badge {
+  font-size: 0.76rem;
+  color: #5f6368;
+}
+
+.gdocs-menubar {
+  display: flex;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: #444746;
+  padding-left: 6px;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+.gdocs-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gdocs-btn-back {
+  background: #ffffff;
+  color: #1f1f1f;
+  border: 1px solid #c7c7c7;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gdocs-btn-back:hover {
+  background: #f1f3f4;
+}
+
+.gdocs-btn-download {
+  background: #e8f0fe;
+  color: #1967d2;
+  border: 1px solid #aecbfa;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gdocs-btn-download:hover {
+  background: #d2e3fc;
+}
+
+.gdocs-btn-share {
+  background: #c2e7ff;
+  color: #001d35;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.gdocs-format-bar {
+  margin: 6px 16px;
+  padding: 6px 14px;
+  background: #edf2fa;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  color: #444746;
+  flex-wrap: wrap;
+}
+
+.gdocs-sep {
+  color: #c7c7c7;
+}
+
+.gdocs-edit-tip {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: #1967d2;
+  font-weight: 600;
+}
+
+.gdocs-canvas-bg {
+  flex: 1;
+  background: #f0f4f9;
+  padding: 24px 20px 36px;
+  overflow-y: auto;
+  max-height: 640px;
+}
+
+.gdocs-page {
+  max-width: 816px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 48px 56px;
+  min-height: 680px;
+  color: #1f1f1f;
+  font-size: 0.96rem;
+  line-height: 1.72;
+  outline: none;
+}
+
+.gdocs-page:focus {
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.25), 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.gdocs-page h5 {
+  font-size: 1.45rem;
+  color: #111827;
+  margin: 0 0 8px;
+  border-bottom: 2px solid #1a73e8;
+  padding-bottom: 10px;
+}
+
+.gdocs-page .report-meta {
+  color: #5f6368;
+  font-size: 0.84rem;
+  margin-bottom: 18px;
+}
+
+.gdocs-page .gem-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 20px;
+  font-size: 0.88rem;
+}
+
+.gdocs-page .gem-report-table th {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  padding: 10px 12px;
+}
+
+.gdocs-page .gem-report-table td {
+  border: 1px solid #cbd5e1;
+  padding: 10px 12px;
+  color: #1e293b;
+}
+
+.gdocs-page .citation {
+  background: #e8f0fe;
+  color: #1967d2;
+}
+
+.gdocs-sources-footer {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.84rem;
+  color: #475569;
+}
+
+/* =========================================================
+   Authentic Claude Code CLI (TUI Console) vs Desktop App Mode
+   ========================================================= */
+/* 1. Pure Full-Width Terminal in CLI Mode (NO GUI left sidebar!) */
+.claude-sim.cli-mode {
+  grid-template-columns: minmax(0, 1fr);
+  background: #0c0c0c;
+  color: #e5e7eb;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, monospace;
+}
+
+.claude-sim.cli-mode.preview-open,
+.claude-sim.cli-mode:has(.claude-preview-pane:not(.hidden)) {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 410px);
+}
+
+.claude-diff-box {
+  overflow-x: auto;
+  word-break: break-word;
+}
+
+.preview-code-box {
+  overflow-x: auto;
+  word-break: break-word;
+}
+
+.claude-sim.cli-mode .claude-app-sidebar {
+  display: none !important;
+}
+
+.claude-sim.app-mode .ps-boot-line,
+.claude-sim.app-mode .cli-folder-inline-bar {
+  display: none;
+}
+
+/* PowerShell Boot Line */
+.ps-boot-line {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.84rem;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.ps-path {
+  color: #d1d5db;
+}
+
+.ps-cmd {
+  color: #facc15;
+  font-weight: 700;
+}
+
+/* Authentic Rust/Orange TUI Welcome Box in CLI Mode */
+.claude-sim.cli-mode .cli-welcome-box {
+  border: 1px solid #d97706;
+  background: transparent;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  max-width: 680px;
+}
+
+.cli-w-muted {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Compact inline file / server bar in CLI mode (replaces non-existent GUI left tree) */
+.cli-folder-inline-bar {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 7px 11px;
+  background: #141416;
+  border: 1px dashed #374151;
+  border-radius: 6px;
+  font-size: 0.78rem;
+}
+
+.cfi-label {
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.cfi-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cfi-chip {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #e5e7eb;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 0.76rem;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cfi-chip:hover {
+  border-color: #fb923c;
+  color: #fff;
+}
+
+.cfi-chip.is-new {
+  border-color: #34d399;
+  color: #6ee7b7;
+}
+
+/* 2. Authentic Console Stream in CLI mode (NO blue/green chat bubbles!) */
+.claude-sim.cli-mode .claude-chat-log {
+  gap: 14px;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', Consolas, monospace;
+}
+
+.claude-sim.cli-mode .chat-msg {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 2px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.claude-sim.cli-mode .chat-msg.system {
+  background: transparent;
+  color: #6b7280;
+  border-bottom: 1px dashed #27272a;
+  padding-bottom: 8px;
+}
+
+.claude-sim.cli-mode .chat-msg.user {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.claude-sim.cli-mode .chat-msg.user .tui-gt {
+  color: #9ca3af;
+  margin-right: 6px;
+}
+
+/* Authentic Claude Code Tool Call & Output Lines */
+.tui-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tui-tool-group {
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.tui-tool-head {
+  color: #f3f4f6;
+}
+
+.claude-sim.app-mode .tui-tool-head {
+  color: #0f172a;
+}
+
+.tui-bullet-green {
+  color: #4ade80;
+  margin-right: 6px;
+}
+
+.tui-bullet-white {
+  color: #e5e7eb;
+  margin-right: 6px;
+}
+
+.claude-sim.app-mode .tui-bullet-white {
+  color: #2563eb;
+}
+
+.tui-tool-fn {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.claude-sim.app-mode .tui-tool-fn {
+  color: #0f172a;
+}
+
+.tui-tool-sub {
+  color: #9ca3af;
+  padding-left: 14px;
+  font-size: 0.8rem;
+}
+
+.claude-sim.app-mode .tui-tool-sub {
+  color: #64748b;
+}
+
+.tui-answer-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  color: #e5e7eb;
+  margin-top: 2px;
+}
+
+.claude-sim.app-mode .tui-answer-row {
+  color: var(--text);
+}
+
+/* 3. Authentic TUI Input Box & Status Line in CLI mode */
+.claude-sim.cli-mode .claude-cli-footer {
+  background: transparent;
+  border: 1px solid #52525b;
+  border-radius: 6px;
+  padding: 9px 12px;
+  box-shadow: none;
+  align-items: center;
+}
+
+.claude-sim.cli-mode .claude-cli-footer:focus-within {
+  border-color: #fb923c;
+}
+
+.claude-sim.cli-mode .cli-prompt-arrow {
+  color: #9ca3af;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.claude-sim.cli-mode .claude-user-input {
+  min-height: 28px;
+  font-size: 0.92rem;
+}
+
+.claude-sim.cli-mode .claude-send-btn {
+  background: #27272a;
+  border: 1px solid #52525b;
+  color: #e4e4e7;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.claude-sim.cli-mode .claude-send-btn:hover {
+  border-color: #fb923c;
+  color: #fff;
+}
+
+.cs-perm-accent {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.claude-sim.app-mode .cs-perm-accent {
+  color: #7c3aed;
+}
+
+/* Authentic TUI Permission Prompt Box (Cyan/Blue TUI border in CLI mode) */
+.claude-sim.cli-mode .claude-perm-modal {
+  border: 1px solid #38bdf8;
+  background: #090d16;
+  border-radius: 6px;
+  box-shadow: none;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+}
+
+.claude-sim.cli-mode .perm-modal-header {
+  color: #38bdf8;
+}
+
+/* =========================================================
+   Deep Research 2-Topic Scenario Selector & Template Run Button
+   ========================================================= */
+.gem-scenario-picker {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 4px 0 6px;
+}
+
+.gem-scenario-chip {
+  background: #1e1f24;
+  border: 1.5px solid #3c4043;
+  color: #c4c7c5;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.gem-scenario-chip:hover {
+  border-color: #8ab4f8;
+  color: #ffffff;
+  background: #282a2f;
+}
+
+.gem-scenario-chip.active {
+  background: rgba(138, 180, 248, 0.18);
+  border-color: #8ab4f8;
+  color: #a8c7fa;
+  box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.15);
+}
+
+.template-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.run-sim-btn {
+  background: var(--primary);
+  color: #ffffff;
+  border: 1px solid var(--primary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.run-sim-btn:hover {
+  background: var(--primary-hover);
+}
+
+.cheat-grid-5 {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.glossary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1180px) {
+  .glossary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .glossary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   Module 3: MCP Concept Comparison & 3-Tier Architecture
+   ========================================================= */
+.mcp-compare-card.before {
+  border-top: 4px solid #94a3b8;
+}
+
+.mcp-compare-card.after {
+  border-top: 4px solid var(--primary);
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 42%);
+}
+
+.mcp-comp-tag {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.mcp-compare-card.after .mcp-comp-tag {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.mcp-arch-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+.mcp-arch-box {
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mcp-arch-box.host {
+  background: #0f172a;
+  color: #f8fafc;
+  border-color: #1e293b;
+}
+
+.mcp-arch-box.host p {
+  color: #cbd5e1;
+}
+
+.mcp-arch-box.server {
+  background: var(--primary-soft);
+  border: 1.5px solid #93c5fd;
+}
+
+.mcp-arch-box.source {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+}
+
+.arch-step-badge {
+  align-self: flex-start;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  color: var(--primary);
+}
+
+.mcp-arch-box.host .arch-step-badge {
+  background: rgba(251, 146, 60, 0.2);
+  color: #fb923c;
+}
+
+.mcp-arch-box.source .arch-step-badge {
+  background: rgba(5, 150, 105, 0.16);
+  color: var(--green);
+}
+
+.mcp-arch-box strong {
+  font-size: 0.96rem;
+}
+
+.mcp-arch-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.mcp-arch-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.15rem;
+  padding: 0 4px;
+}
+
+.mcp-arch-arrow small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+@media (max-width: 980px) {
+  .mcp-arch-grid {
+    grid-template-columns: 1fr;
+  }
+  .mcp-arch-arrow {
+    transform: rotate(0deg);
+    padding: 4px 0;
+  }
+}
+
+/* Authentic /mcp TUI Panel & Tool Inspector */
+.tui-mcp-panel {
+  border: 1px solid #38bdf8;
+  background: #090d16;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #e2e8f0;
+  margin-top: 4px;
+}
+
+.claude-sim.app-mode .tui-mcp-panel {
+  background: #f8fafc;
+  border-color: #93c5fd;
+  color: #0f172a;
+}
+
+.tui-mcp-title {
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+.claude-sim.app-mode .tui-mcp-title {
+  color: var(--primary);
+}
+
+.tui-mcp-srv-block {
+  padding: 7px 0;
+  border-top: 1px dashed rgba(148, 163, 184, 0.25);
+}
+
+.tui-mcp-tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+  padding-left: 14px;
+}
+
+.tui-tool-tag {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 0.73rem;
+}
+
+.claude-sim.app-mode .tui-tool-tag {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0369a1;
+}
+
+.mcp-opt-btn.kb-selected {
+  border-color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.22) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.claude-sim.app-mode .mcp-opt-btn.kb-selected {
+  background: #dbeafe !important;
+  border-color: #2563eb !important;
+  color: #1e40af !important;
 }
