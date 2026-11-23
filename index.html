@@ -109,11 +109,13 @@
         </nav>
 
         <div class="sidebar-tip">
-          <strong>💡 활용 안내</strong>
+          <strong>💡 파트별 화면 전환 안내</strong>
           <p>
-            상단의 <strong>⚡ 전기기술팀 / 📊 일반 부서장</strong> 버튼을
-            선택하시면 모든 예시와 체험 화면이 해당 직무 기준으로 전환됩니다.
+            좌측 목차(0~4교시·용어)를 누르시면 <strong>선택한 파트만 한 화면에 깔끔하게 전환</strong>됩니다. 전체를 한 번에 보시려면 아래 버튼을 눌러주세요.
           </p>
+          <button type="button" class="sidebar-view-mode-btn" id="btnToggleAllView">
+            📑 전체 파트 한눈에 펼치기
+          </button>
         </div>
       </aside>
 
@@ -221,6 +223,37 @@
                     누르면 해당 폴더가 즉시 AI와 연결됩니다.
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enriched for 3-Hour Hands-on Session: Top 4 Field Troubleshooting Guide -->
+          <div class="card">
+            <h4>🛠️ 실습 중 막힐 때 바로 확인하는 현장 대처법 4가지</h4>
+            <div class="qa-grid">
+              <div class="qa-item">
+                <strong>① 터미널(cmd) 창에 복사한 프롬프트는 어떻게 붙여넣나요?</strong>
+                <p>
+                  본 가이드에서 <code>[📋 클릭해서 복사하기]</code>를 누른 뒤, 검은색 터미널 입력창에서 <strong><kbd>Ctrl</kbd> + <kbd>V</kbd></strong>를 누르거나 <strong>마우스 오른쪽 버튼을 한 번 클릭</strong>하면 긴 한글 지시문이 그대로 붙여넣어집니다.
+                </p>
+              </div>
+              <div class="qa-item">
+                <strong>② AI가 답변을 너무 길게 하거나 다른 방향으로 작업할 때는?</strong>
+                <p>
+                  끝까지 기다리실 필요 없이 키보드 좌측 상단의 <strong><kbd>Esc</kbd> 키(또는 <kbd>Ctrl</kbd> + <kbd>C</kbd>)</strong>를 누르면 즉시 멈춥니다. 그 상태에서 <em>"표만 간단히 다시 정리해 줘"</em>처럼 바로 재지시하시면 됩니다.
+                </p>
+              </div>
+              <div class="qa-item">
+                <strong>③ Claude가 새로 만든 보고서(<code>.md</code>)나 대시보드(<code>index.html</code>)는 어디에 있나요?</strong>
+                <p>
+                  처음에 <code>cmd</code>를 실행했던 <strong>내 PC의 해당 작업 폴더 안</strong>에 실제 파일로 저장되어 있습니다. 특히 <code>index.html</code>을 마우스로 더블클릭하면 크롬·엣지 브라우저에서 대시보드가 바로 열립니다.
+                </p>
+              </div>
+              <div class="qa-item">
+                <strong>④ 다른 주제의 새 보고서를 만들려는데 이전 대화 내용이 섞여 나올 때는?</strong>
+                <p>
+                  입력창에 <strong><code>/clear</code></strong>를 치고 <kbd>Enter</kbd>를 누르면 이전 대화 기억이 깨끗이 초기화되어, 새 업무 주제에만 집중한 정확한 결과를 얻을 수 있습니다.
+                </p>
               </div>
             </div>
           </div>
@@ -789,6 +822,15 @@
             </div>
           </div>
 
+          <!-- Enriched for 3-Hour Hands-on Session: Module 2 Copyable Prompt Templates -->
+          <div class="card">
+            <h4>📋 교육 당일 복사해서 바로 쓰는 Claude Code 실무 프롬프트 4종</h4>
+            <p class="card-text">
+              2교시 실습 시간에 아래 카드를 클릭해 복사한 뒤 터미널에 붙여넣거나, <strong>[▶ 위 시뮬레이터에서 바로 실행]</strong> 버튼으로 동작을 확인해 보세요.
+            </p>
+            <div class="template-grid" id="claudeCodeTemplates"></div>
+          </div>
+
           <!-- Claude Code Q&A (Consolidated & Enriched) -->
           <div class="card">
             <h4>💬 보직장 실무 적용 핵심 체크포인트 (Claude Code)</h4>
@@ -1213,6 +1255,34 @@
             <div class="template-grid" id="dashboardTemplates"></div>
           </div>
 
+          <!-- Enriched for 3-Hour Hands-on Session: 3 Practical Customization Missions -->
+          <div class="card">
+            <h4>🎯 [실습 응용 미션] 내 부서 대시보드에 바로 추가해 보는 한 줄 요청 3가지</h4>
+            <p class="card-text">
+              기본 대시보드(<code>index.html</code>)가 만들어진 상태에서 아래 문장 중 하나를 골라 Claude Code에 추가로 요청해 보세요. 코딩 수정 없이 원하는 기능이 즉시 반영됩니다.
+            </p>
+            <div class="compare-3">
+              <div class="compare-box">
+                <div class="compare-label">미션 A · 임원 브리핑 요약 박스 추가</div>
+                <p>
+                  <em>"대시보드 최상단에 이번 달 가장 시급한 조치 대상 2건을 굵은 글씨로 요약해 주는 [임원 보고 한 줄 브리핑] 배너를 넣어 줘."</em>
+                </p>
+              </div>
+              <div class="compare-box">
+                <div class="compare-label">미션 B · 기준치 초과 항목 색상 경고</div>
+                <p>
+                  <em>"표에서 상태가 '주의'이거나 '점검필요/지연'인 행은 연한 주황색 배경으로 강조하고 상단에 먼저 정렬해 줘."</em>
+                </p>
+              </div>
+              <div class="compare-box accent">
+                <div class="compare-label">미션 C · 엑셀/CSV 다운로드 버튼 추가</div>
+                <p>
+                  <em>"현재 필터링된 표 데이터를 엑셀에서 바로 열 수 있도록 우측 상단에 [📥 현재 표 CSV 다운로드] 버튼을 추가해 줘."</em>
+                </p>
+              </div>
+            </div>
+          </div>
+
           <!-- Dashboard Q&A (Consolidated) -->
           <div class="card">
             <h4>💬 최종 과제 제출 및 현업 활용 체크포인트</h4>
@@ -1400,6 +1470,19 @@
             </div>
           </div>
         </section>
+
+        <!-- Bottom Part Switcher Bar (Prev / Next Part Navigation) -->
+        <nav class="module-pager-bar" id="modulePagerBar" aria-label="이전 및 다음 교육 파트 이동">
+          <button type="button" class="pager-btn prev" id="btnPrevModule">
+            <span class="pager-dir">← 이전 파트</span>
+            <strong id="prevModuleLabel">Module 0 · 사전 안내</strong>
+          </button>
+          <div class="pager-indicator" id="pagerStepText">1 / 6 파트</div>
+          <button type="button" class="pager-btn next" id="btnNextModule">
+            <span class="pager-dir">다음 파트 →</span>
+            <strong id="nextModuleLabel">1교시 · Gemini Deep Research</strong>
+          </button>
+        </nav>
 
         <footer class="footer">
           <p>

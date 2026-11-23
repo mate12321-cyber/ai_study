@@ -101,6 +101,7 @@
   const claudePreviewTitle = document.getElementById('claudePreviewTitle');
   const claudePreviewBody = document.getElementById('claudePreviewBody');
   const btnCloseClaudePreview = document.getElementById('btnCloseClaudePreview');
+  const claudeCodeTemplates = document.getElementById('claudeCodeTemplates');
   const viewBtns = document.querySelectorAll('.view-btn');
   let claudeRuntimeFiles = [];
   let claudeContextPct = 12;
@@ -1030,6 +1031,19 @@
       });
       claudeQuickPrompts.appendChild(btn);
     });
+
+    if (claudeCodeTemplates && c.templates) {
+      renderTemplates(claudeCodeTemplates, c.templates, (idx, item) => {
+        if (claudeSimContainer) {
+          claudeSimContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        const matchedStep = c.steps[idx] || c.steps[1] || c.steps[0];
+        appendClaudeTurn({
+          ...matchedStep,
+          user: item.text
+        });
+      });
+    }
   }
 
   if (btnClaudeResetTop) {
@@ -2023,18 +2037,40 @@
     btn.addEventListener('click', () => setDomain(btn.dataset.domain, true));
   });
 
-  // Scroll Spy for Sidebar, Top Progress Bar & Back-to-Top
-  const sections = document.querySelectorAll('section[id]');
+  // Tabbed Single-Module View Switching & Prev/Next Pager
+  const sections = Array.from(document.querySelectorAll('section.module-section[id]'));
   const navItems = document.querySelectorAll('.nav-item');
+  const currPills = document.querySelectorAll('.curr-pill[href^="#"]');
+  const btnToggleAllView = document.getElementById('btnToggleAllView');
+  const btnPrevModule = document.getElementById('btnPrevModule');
+  const btnNextModule = document.getElementById('btnNextModule');
+  const prevModuleLabel = document.getElementById('prevModuleLabel');
+  const nextModuleLabel = document.getElementById('nextModuleLabel');
+  const pagerStepText = document.getElementById('pagerStepText');
 
-  window.addEventListener('scroll', () => {
-    let currentId = 'module-0';
+  const MODULE_META = [
+    { id: 'module-0', label: '0. AI 핵심 원리 & 환경 준비' },
+    { id: 'module-1', label: '1교시 (1h) · Gemini Deep Research' },
+    { id: 'module-2', label: '2교시 (4h) · Claude Code 실무' },
+    { id: 'module-3', label: '3교시 (2h) · MCP 개념 & 연동' },
+    { id: 'module-4', label: '4교시 (1h) · 동적 대시보드 과제' },
+    { id: 'glossary', label: '참고 · 교육장 핵심 용어 정리 (16선)' }
+  ];
+
+  let isTabbedView = true;
+  let activeModuleId = 'module-0';
+  document.body.classList.add('tabbed-view');
+
+  function setActiveModule(sectionId, shouldScroll = true) {
+    const valid = MODULE_META.some((m) => m.id === sectionId);
+    activeModuleId = valid ? sectionId : 'module-0';
+
     sections.forEach((sec) => {
-      const top = sec.getBoundingClientRect().top;
-      if (top <= 150) currentId = sec.id;
+      sec.classList.toggle('active-module', sec.id === activeModuleId);
     });
+
     navItems.forEach((item) => {
-      const isCurrent = item.dataset.section === currentId;
+      const isCurrent = item.dataset.section === activeModuleId;
       item.classList.toggle('active', isCurrent);
       if (isCurrent) {
         item.setAttribute('aria-current', 'true');
@@ -2042,12 +2078,107 @@
         item.removeAttribute('aria-current');
       }
     });
-    backToTopBtn.classList.toggle('show', window.scrollY > 400);
 
-    if (topScrollFill) {
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docH > 0 ? Math.min(100, Math.max(0, (window.scrollY / docH) * 100)) : 0;
+    currPills.forEach((pill) => {
+      const targetId = (pill.getAttribute('href') || '').replace('#', '');
+      pill.classList.toggle('active-pill', targetId === activeModuleId);
+    });
+
+    const idx = MODULE_META.findIndex((m) => m.id === activeModuleId);
+    if (pagerStepText) {
+      pagerStepText.textContent = `${idx + 1} / ${MODULE_META.length} 파트`;
+    }
+    if (btnPrevModule) {
+      btnPrevModule.disabled = idx <= 0;
+      if (prevModuleLabel) {
+        prevModuleLabel.textContent = idx > 0 ? MODULE_META[idx - 1].label : '첫 번째 파트입니다';
+      }
+    }
+    if (btnNextModule) {
+      btnNextModule.disabled = idx >= MODULE_META.length - 1;
+      if (nextModuleLabel) {
+        nextModuleLabel.textContent =
+          idx < MODULE_META.length - 1 ? MODULE_META[idx + 1].label : '마지막 파트입니다';
+      }
+    }
+
+    if (topScrollFill && isTabbedView) {
+      const pct = ((idx + 1) / MODULE_META.length) * 100;
       topScrollFill.style.width = `${pct}%`;
+    }
+
+    if (shouldScroll) {
+      const targetEl = document.getElementById(activeModuleId);
+      if (targetEl) {
+        const y = isTabbedView ? 0 : targetEl.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
+  }
+
+  navItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.dataset.section;
+      if (targetId) setActiveModule(targetId, true);
+    });
+  });
+
+  currPills.forEach((pill) => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = (pill.getAttribute('href') || '').replace('#', '');
+      if (targetId) setActiveModule(targetId, true);
+    });
+  });
+
+  if (btnPrevModule) {
+    btnPrevModule.addEventListener('click', () => {
+      const idx = MODULE_META.findIndex((m) => m.id === activeModuleId);
+      if (idx > 0) setActiveModule(MODULE_META[idx - 1].id, true);
+    });
+  }
+
+  if (btnNextModule) {
+    btnNextModule.addEventListener('click', () => {
+      const idx = MODULE_META.findIndex((m) => m.id === activeModuleId);
+      if (idx < MODULE_META.length - 1) setActiveModule(MODULE_META[idx + 1].id, true);
+    });
+  }
+
+  if (btnToggleAllView) {
+    btnToggleAllView.addEventListener('click', () => {
+      isTabbedView = !isTabbedView;
+      document.body.classList.toggle('tabbed-view', isTabbedView);
+      btnToggleAllView.textContent = isTabbedView
+        ? '📑 전체 파트 한눈에 펼치기'
+        : '🗂️ 파트별 화면 전환 모드로 보기';
+      showToast(
+        isTabbedView
+          ? '파트별 화면 전환 모드가 적용되었습니다.'
+          : '전체 파트가 한 페이지에 펼쳐졌습니다.'
+      );
+      setActiveModule(activeModuleId, false);
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('show', window.scrollY > 400);
+    if (!isTabbedView) {
+      let currentId = 'module-0';
+      sections.forEach((sec) => {
+        const top = sec.getBoundingClientRect().top;
+        if (top <= 150) currentId = sec.id;
+      });
+      navItems.forEach((item) => {
+        const isCurrent = item.dataset.section === currentId;
+        item.classList.toggle('active', isCurrent);
+      });
+      if (topScrollFill) {
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docH > 0 ? Math.min(100, Math.max(0, (window.scrollY / docH) * 100)) : 0;
+        topScrollFill.style.width = `${pct}%`;
+      }
     }
   });
 
@@ -2057,4 +2188,5 @@
 
   // Init
   setDomain('electrical');
+  setActiveModule('module-0', false);
 })();

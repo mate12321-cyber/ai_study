@@ -5826,3 +5826,141 @@ kbd {
   color: #1e293b;
   line-height: 1.58;
 }
+
+/* =========================================================
+   11. Tabbed Single-Module View Switching & Prev/Next Pager
+   ========================================================= */
+body.tabbed-view .module-section {
+  display: none;
+}
+
+body.tabbed-view .module-section.active-module {
+  display: flex;
+  animation: moduleFadeIn 0.22s ease-out;
+}
+
+@keyframes moduleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar-view-mode-btn {
+  margin-top: 10px;
+  width: 100%;
+  background: #ffffff;
+  color: #78350f;
+  border: 1.5px solid #f59e0b;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sidebar-view-mode-btn:hover {
+  background: #fef3c7;
+}
+
+.curr-pill.active-pill {
+  background: #2563eb;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.35);
+}
+
+.module-pager-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  box-shadow: var(--shadow);
+}
+
+body:not(.tabbed-view) .module-pager-bar {
+  display: none;
+}
+
+.pager-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface-alt);
+  border: 1.5px solid var(--border);
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+  min-width: 220px;
+  transition: all 0.15s;
+}
+
+.pager-btn.prev {
+  text-align: left;
+}
+
+.pager-btn.next {
+  text-align: right;
+  background: var(--primary-soft);
+  border-color: #93c5fd;
+}
+
+.pager-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.pager-btn:hover:not(:disabled) .pager-dir {
+  color: #dbeafe;
+}
+
+.pager-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.pager-dir {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.pager-btn strong {
+  font-size: 1rem;
+}
+
+.pager-indicator {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  background: var(--surface-alt);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 760px) {
+  .module-pager-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pager-btn {
+    min-width: 0;
+    text-align: center !important;
+  }
+  .pager-indicator {
+    text-align: center;
+  }
+}
