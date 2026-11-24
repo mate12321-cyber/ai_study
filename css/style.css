@@ -6283,3 +6283,533 @@ body.tabbed-view.compact-hero .curr-pill span {
     gap: 16px;
   }
 }
+
+/* =========================================================
+   14. Mobile & Small Tablet Responsive Layout (<= 980px & <= 640px)
+   ========================================================= */
+@media (max-width: 980px) {
+  /* Collapse desktop 2-column layout into single column with horizontal sticky nav strip */
+  .layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 12px 14px;
+    gap: 14px;
+  }
+
+  .sidebar-toggle-topbtn {
+    display: none;
+  }
+
+  .sidebar {
+    display: block !important;
+    position: sticky;
+    top: 56px;
+    z-index: 45;
+    padding: 4px 0;
+    background: rgba(238, 242, 246, 0.96);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-list {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 6px 8px;
+    gap: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .nav-step {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+
+  .nav-title {
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .nav-meta {
+    display: none;
+  }
+
+  /* Single-column grids on mobile/tablet */
+  .grid-2,
+  .compare-3,
+  .template-grid,
+  .qa-grid,
+  .dash-body-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Gemini Simulator Mobile Stack */
+  .gemini-shell.dark-gemini,
+  .gemini-shell.dark-gemini.sidebar-collapsed {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+
+  .gemini-shell.dark-gemini .gemini-sidebar {
+    display: none !important;
+  }
+
+  .gem-split-view {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gem-split-right {
+    min-height: auto;
+    max-height: none;
+  }
+
+  /* Claude Code & MCP Simulator Mobile Stack */
+  .claude-sim.cli-mode,
+  .claude-sim.app-mode,
+  .claude-sim.cli-mode.preview-open,
+  .claude-sim.app-mode.preview-open,
+  .claude-sim.cli-mode:has(.claude-preview-pane:not(.hidden)),
+  .claude-sim.app-mode:has(.claude-preview-pane:not(.hidden)) {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+
+  .claude-sim.cli-mode.preview-open .claude-preview-pane,
+  .claude-sim.app-mode.preview-open .claude-preview-pane,
+  .claude-preview-pane {
+    grid-column: 1 / -1;
+    border-left: none !important;
+    border-top: 2px solid #38bdf8 !important;
+    min-height: auto;
+    max-height: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+    line-height: 1.68;
+  }
+
+  body.large-text {
+    font-size: 18px;
+  }
+
+  /* Topbar Compact Mobile Layout */
+  .topbar-inner {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+
+  .topbar-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .domain-switch {
+    flex: 1;
+    display: flex;
+  }
+
+  .domain-btn {
+    flex: 1;
+    padding: 7px 8px;
+    font-size: 0.82rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .icon-btn {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .sidebar {
+    top: 88px;
+  }
+
+  /* Hero Card & Curriculum Pills on Mobile */
+  .hero-card {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .hero-card h2 {
+    font-size: 1.28rem;
+    line-height: 1.38;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+  }
+
+  .curriculum-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .curr-arrow {
+    display: none;
+  }
+
+  .curr-pill {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    text-align: left;
+  }
+
+  body.tabbed-view.compact-hero .hero-card {
+    display: none;
+  }
+
+  /* Module Headers & Cards */
+  .module-header h3 {
+    font-size: 1.28rem;
+  }
+
+  .module-header p {
+    font-size: 0.92rem;
+  }
+
+  .card {
+    padding: 16px 15px;
+    border-radius: 14px;
+  }
+
+  .card h4 {
+    font-size: 1.05rem;
+  }
+
+  /* Sim Guide Bar & Steppers */
+  .sim-guide-bar {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .sim-guide-title {
+    font-size: 0.92rem;
+  }
+
+  .sim-stepper,
+  .mcp-flow-pills {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .sim-step,
+  .mcp-flow-step {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+  }
+
+  /* Browser & Win11 Titlebars on Mobile */
+  .browser-tabs-row {
+    padding: 6px 10px 0;
+    overflow-x: auto;
+  }
+
+  .browser-tab {
+    min-width: 140px;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+
+  .browser-nav-row {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .browser-nav-btns,
+  .win11-window-btns {
+    display: none;
+  }
+
+  .win11-titlebar {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .win11-tab {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+
+  .win11-controls-right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 2px;
+  }
+
+  .view-toggle {
+    width: 100%;
+    display: flex;
+  }
+
+  .view-btn {
+    flex: 1;
+    padding: 6px 8px;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  /* Gemini Simulator Mobile Details */
+  .gemini-shell.dark-gemini .gemini-topbar {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .gemini-scroll-area {
+    padding: 14px 12px;
+  }
+
+  .gem-hello-gradient {
+    font-size: 1.35rem;
+  }
+
+  .gem-hello-sub {
+    font-size: 0.92rem;
+  }
+
+  .gem-scenario-chip {
+    width: 100%;
+    text-align: center;
+    padding: 9px 12px;
+    font-size: 0.86rem;
+  }
+
+  .gem-demo-cta {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 0.88rem;
+    border-radius: 12px;
+    line-height: 1.4;
+  }
+
+  .gem-site-chips {
+    grid-template-columns: 1fr !important;
+  }
+
+  .report-body {
+    padding: 14px 12px;
+    font-size: 0.92rem;
+    overflow-x: auto;
+  }
+
+  .gem-report-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .gem-input-dock {
+    padding: 10px 10px 14px;
+  }
+
+  .gem-input-box {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .gem-input-bottom {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .gem-left-tools {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Google Docs View on Mobile */
+  .gdocs-topbar {
+    padding: 10px 12px;
+  }
+
+  .gdocs-title-input {
+    min-width: 0;
+    width: 100%;
+    font-size: 0.94rem;
+  }
+
+  .gdocs-menubar,
+  .gdocs-edit-tip {
+    display: none;
+  }
+
+  .gdocs-page {
+    padding: 20px 16px;
+    min-height: auto;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+
+  /* Claude Code & MCP Terminal on Mobile */
+  .claude-sim.cli-mode .claude-main-pane {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .claude-sim.cli-mode .ps-boot-line {
+    font-size: 0.8rem;
+    padding: 7px 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .claude-sim.cli-mode .cli-welcome-box {
+    padding: 10px 12px;
+  }
+
+  .claude-sim.cli-mode .cli-w-title {
+    font-size: 0.96rem;
+  }
+
+  .claude-sim.cli-mode .cli-w-row {
+    font-size: 0.82rem;
+    word-break: break-all;
+  }
+
+  .claude-sim.cli-mode .cli-folder-inline-bar {
+    padding: 9px 11px;
+  }
+
+  .claude-sim.cli-mode .cfi-chip {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+  }
+
+  .claude-sim.cli-mode .claude-chat-log {
+    padding: 12px !important;
+    min-height: 240px;
+    max-height: 400px;
+  }
+
+  .claude-sim.cli-mode .chat-msg.user {
+    font-size: 0.94rem;
+    padding: 10px 12px;
+  }
+
+  .claude-sim.cli-mode .chat-msg.ai {
+    font-size: 0.92rem;
+    padding: 12px;
+  }
+
+  .claude-sim.cli-mode .claude-quick-bar {
+    padding: 11px 12px;
+  }
+
+  .claude-sim.cli-mode .prompt-chip {
+    width: 100%;
+    text-align: left;
+    font-size: 0.86rem;
+    padding: 10px 12px;
+  }
+
+  .claude-sim.cli-mode .claude-cli-footer {
+    padding: 9px 11px;
+  }
+
+  .claude-sim.cli-mode .claude-status-line {
+    font-size: 0.78rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  /* Dynamic Dashboard on Mobile */
+  .dash-app {
+    padding: 14px 12px;
+    gap: 14px;
+  }
+
+  .dash-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .dash-filters {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dash-filter-label {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dash-alert-filter-btn,
+  .dash-print-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .kpi-card {
+    padding: 14px 12px;
+  }
+
+  .kpi-value {
+    font-size: 1.38rem;
+  }
+
+  /* Template Cards & Glossary on Mobile */
+  .template-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .run-sim-btn,
+  .copy-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .glossary-grid,
+  .cheat-grid,
+  .cheat-grid-5 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .toast {
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+    text-align: center;
+    font-size: 0.86rem;
+  }
+}
