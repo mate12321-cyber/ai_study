@@ -6046,3 +6046,240 @@ body.main-sidebar-collapsed .sidebar-toggle-topbtn {
     display: none;
   }
 }
+
+/* =========================================================
+   13. 1024x768 Classroom Display & Beam Projector Optimization
+   ========================================================= */
+/* A. Compact Hero Banner when viewing Module 1~4 or Glossary so Simulator appears immediately without scrolling */
+body.tabbed-view.compact-hero .hero-card {
+  padding: 14px 22px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+body.tabbed-view.compact-hero .hero-tag,
+body.tabbed-view.compact-hero .hero-card h2,
+body.tabbed-view.compact-hero .hero-desc {
+  display: none;
+}
+
+body.tabbed-view.compact-hero .curriculum-strip {
+  width: 100%;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+body.tabbed-view.compact-hero .curr-pill {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+}
+
+body.tabbed-view.compact-hero .curr-pill span {
+  display: inline;
+  margin-right: 4px;
+}
+
+/* B. 1024px ~ 1280px Width Optimization (4:3 / 1024x768 Classroom Screen) */
+@media (max-width: 1200px) {
+  .topbar-inner {
+    padding: 8px 18px;
+    gap: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.12rem;
+  }
+
+  .active-domain-pill {
+    display: none;
+  }
+
+  .domain-btn {
+    padding: 7px 13px;
+    font-size: 0.88rem;
+  }
+
+  .icon-btn,
+  .sidebar-toggle-topbtn {
+    padding: 7px 12px;
+    font-size: 0.86rem;
+  }
+
+  .layout {
+    grid-template-columns: 225px minmax(0, 1fr);
+    gap: 18px;
+    padding: 16px 18px;
+  }
+
+  .sidebar {
+    top: 64px;
+    gap: 10px;
+  }
+
+  .nav-list {
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .nav-item {
+    padding: 9px 10px;
+    gap: 9px;
+  }
+
+  .nav-step {
+    width: 28px;
+    height: 28px;
+    font-size: 0.86rem;
+  }
+
+  .nav-title {
+    font-size: 0.92rem;
+  }
+
+  .nav-meta {
+    font-size: 0.78rem;
+  }
+
+  .sidebar-tip {
+    padding: 12px 14px;
+    font-size: 0.84rem;
+  }
+
+  .main-content {
+    gap: 18px;
+  }
+
+  .hero-card {
+    padding: 24px 26px;
+  }
+
+  .hero-card h2 {
+    font-size: 1.55rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-desc {
+    font-size: 0.96rem;
+    margin-bottom: 16px;
+  }
+
+  .curr-pill {
+    padding: 8px 12px;
+    font-size: 0.86rem;
+  }
+
+  .card {
+    padding: 20px 22px;
+  }
+
+  .card h4 {
+    font-size: 1.12rem;
+    margin-bottom: 10px;
+  }
+
+  /* Gemini Simulator inside 1024px width */
+  .gemini-shell.dark-gemini {
+    grid-template-columns: 185px minmax(0, 1fr);
+    min-height: 540px;
+  }
+
+  .gemini-shell.dark-gemini.sidebar-collapsed {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .gem-split-view {
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  /* Side-by-side Preview in Claude CLI Mode at 1024px */
+  .claude-sim.cli-mode.preview-open,
+  .claude-sim.cli-mode:has(.claude-preview-pane:not(.hidden)) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+  }
+
+  .claude-sim.cli-mode.preview-open .claude-preview-pane {
+    grid-column: auto;
+    border-top: none;
+    border-left: 2px solid #38bdf8;
+    max-height: 580px;
+  }
+
+  /* Glossary 2x8 grid at 1024px so text isn't squished into 4 narrow columns */
+  .glossary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* C. 768px Vertical Height Optimization (Ensures entire simulator fits in one screen without clipping input bar) */
+@media (max-height: 840px) {
+  .gemini-shell.dark-gemini {
+    min-height: 490px;
+  }
+
+  .gem-split-right {
+    min-height: 390px;
+    max-height: 470px;
+    padding: 16px;
+  }
+
+  .gem-input-dock {
+    padding: 10px 18px 14px;
+  }
+
+  .gem-input-box {
+    padding: 12px 16px;
+  }
+
+  .gem-input-textarea {
+    min-height: 62px;
+    margin-bottom: 6px;
+    font-size: 0.96rem;
+  }
+
+  .gdocs-shell {
+    min-height: 520px;
+  }
+
+  .gdocs-canvas-bg {
+    max-height: 440px;
+    padding: 16px;
+  }
+
+  .claude-sim {
+    min-height: 510px;
+  }
+
+  .claude-sim.cli-mode .claude-main-pane {
+    padding: 14px 18px;
+    gap: 10px;
+  }
+
+  .claude-chat-log {
+    min-height: 240px;
+    max-height: 330px;
+    padding: 12px 14px !important;
+  }
+
+  .dash-builder-log {
+    min-height: 155px;
+    max-height: 230px;
+  }
+
+  .claude-preview-pane {
+    min-height: 510px;
+    max-height: 560px;
+  }
+
+  .dash-app {
+    min-height: 430px;
+    padding: 18px 20px;
+    gap: 16px;
+  }
+}

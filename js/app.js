@@ -2067,6 +2067,9 @@
     const valid = MODULE_META.some((m) => m.id === sectionId);
     activeModuleId = valid ? sectionId : 'module-0';
 
+    // Compact the Hero Banner when user is inside Module 1~4 or Glossary so simulators fit 1024x768 height
+    document.body.classList.toggle('compact-hero', isTabbedView && activeModuleId !== 'module-0');
+
     sections.forEach((sec) => {
       sec.classList.toggle('active-module', sec.id === activeModuleId);
     });
@@ -2211,5 +2214,9 @@
 
   // Init
   setDomain('electrical');
+  // On 1024x768 classroom displays, collapse the Gemini inner sidebar by default to maximize canvas width
+  if (window.innerWidth <= 1150 && geminiAppShell) {
+    geminiAppShell.classList.add('sidebar-collapsed');
+  }
   setActiveModule('module-0', false);
 })();
