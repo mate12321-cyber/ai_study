@@ -2042,6 +2042,8 @@
   const navItems = document.querySelectorAll('.nav-item');
   const currPills = document.querySelectorAll('.curr-pill[href^="#"]');
   const btnToggleAllView = document.getElementById('btnToggleAllView');
+  const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+  const btnSidebarInlineCollapse = document.getElementById('btnSidebarInlineCollapse');
   const btnPrevModule = document.getElementById('btnPrevModule');
   const btnNextModule = document.getElementById('btnNextModule');
   const prevModuleLabel = document.getElementById('prevModuleLabel');
@@ -2160,6 +2162,27 @@
       );
       setActiveModule(activeModuleId, false);
     });
+  }
+
+  // Collapsible Main Left Sidebar (expands main content to full width)
+  function toggleMainSidebar() {
+    const isCollapsed = document.body.classList.toggle('main-sidebar-collapsed');
+    if (sidebarToggleBtn) {
+      sidebarToggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
+      sidebarToggleBtn.textContent = isCollapsed ? '☰ 목차 펼치기' : '◀ 목차 접기';
+    }
+    showToast(
+      isCollapsed
+        ? '좌측 목차를 접어 본문과 시뮬레이터 화면이 전체 폭으로 확장되었습니다.'
+        : '좌측 커리큘럼 목차가 펼쳐졌습니다.'
+    );
+  }
+
+  if (sidebarToggleBtn) {
+    sidebarToggleBtn.addEventListener('click', toggleMainSidebar);
+  }
+  if (btnSidebarInlineCollapse) {
+    btnSidebarInlineCollapse.addEventListener('click', toggleMainSidebar);
   }
 
   window.addEventListener('scroll', () => {

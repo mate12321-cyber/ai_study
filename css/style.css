@@ -5964,3 +5964,85 @@ body:not(.tabbed-view) .module-pager-bar {
     text-align: center;
   }
 }
+
+/* =========================================================
+   12. Collapsible Left Sidebar & Full-Width Main Content
+   ========================================================= */
+.layout {
+  transition: grid-template-columns 0.22s ease;
+}
+
+body.main-sidebar-collapsed .layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+body.main-sidebar-collapsed .sidebar {
+  display: none;
+}
+
+.sidebar-toggle-topbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-alt);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sidebar-toggle-topbtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+body.main-sidebar-collapsed .sidebar-toggle-topbtn {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 4px 0;
+}
+
+.sidebar-heading {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.sidebar-collapse-inline-btn {
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 4px 11px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.sidebar-collapse-inline-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+@media (max-width: 980px) {
+  .sidebar-header-row {
+    display: none;
+  }
+}

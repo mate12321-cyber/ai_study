@@ -22,6 +22,15 @@
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">
+          <button
+            type="button"
+            id="sidebarToggleBtn"
+            class="sidebar-toggle-topbtn"
+            aria-expanded="true"
+            title="좌측 목차 접기 / 펼치기 (본문 넓게 보기)"
+          >
+            ◀ 목차 접기
+          </button>
           <span class="brand-badge">사전 브리핑</span>
           <h1 class="brand-title">보직장 AI 실전 가이드</h1>
           <span class="active-domain-pill" id="headerDomainPill">⚡ 전기기술팀 기준</span>
@@ -60,9 +69,20 @@
       </div>
     </header>
 
-    <div class="layout">
+    <div class="layout" id="mainLayout">
       <!-- Left Sidebar Navigation -->
-      <aside class="sidebar">
+      <aside class="sidebar" id="mainSidebar">
+        <div class="sidebar-header-row">
+          <span class="sidebar-heading">📚 교육 커리큘럼 목차</span>
+          <button
+            type="button"
+            class="sidebar-collapse-inline-btn"
+            id="btnSidebarInlineCollapse"
+            title="사이드바 접고 본문 넓게 보기"
+          >
+            ◀ 접기
+          </button>
+        </div>
         <nav class="nav-list" aria-label="커리큘럼 목차">
           <a href="#module-0" class="nav-item active" data-section="module-0">
             <span class="nav-step">0</span>
